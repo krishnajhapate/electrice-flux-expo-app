@@ -1,0 +1,36 @@
+# Expo
+.expo
+__generated__
+web-build
+
+# macOS
+.DS_Store
+
+# Node
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Ruby
+.direnv
+
+# Env
+.envrc.local
+
+# Emacs
+*~
+
+# VSCode
+.history/
+
+
+# Android
+*.apk
+*.hprof
+/android/**/build
+/android/**/.cxx
+/android/**/local.properties
+/android/captures
+/android/expoview/libs/ReactAndroid-temp
+/android/versioned-react-native/ReactAndroid
+ReactAndroid-temp.aar
