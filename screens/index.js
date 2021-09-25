@@ -7,6 +7,8 @@ import Settings from './Settings';
 import Invoice from './Invoice';
 import Products from './Products';
 import Services from './Services';
+import Login from './Login';
+import Signup from './Signup';
 import tw from 'tailwind-react-native-classnames'
 import { Icon } from 'react-native-elements'
 
@@ -16,46 +18,69 @@ const Tab = createBottomTabNavigator()
 
 
 const DrawerHeaderStyle = {
+    drawerLableShow: false,
     headerStyle: {
         backgroundColor: '#9AC4F8',
     },
-    headerTintColor: '#fff',
+    headerTintColor: 'white',
 }
 
 export default function Screens() {
-    const [user, setUser] = useState(true)
+    const [user, setUser] = useState(false)
 
     return (
         <>
 
-            <Drawer.Navigator
-                screenOptions={{
-                    drawerActiveTintColor: "white",
-                    drawerStyle: {
-                        backgroundColor: '#9AC4F8',
-                        width: 240,
-                    },
-                    headerBackTitle: "Back",
-                }}
-            >
-                <Drawer.Screen
-                    name="Home"
-                    component={MainScreen}
-                    options={DrawerHeaderStyle}
+            {user ?
+                <Drawer.Navigator
+                    screenOptions={{
+                        drawerActiveTintColor: "white",
+                        drawerStyle: {
+                            backgroundColor: '#9AC4F8',
+                            width: 240,
+                        },
+                        headerBackTitle: "Back",
+                    }}
+                >
+                    <Drawer.Screen
+                        name="Home"
+                        component={MainScreen}
+                        options={DrawerHeaderStyle}
 
-                />
-                <Stack.Screen
-                    name="Settings"
-                    component={Settings}
-                    options={DrawerHeaderStyle}
-                />
-                {/* <Stack.Screen
+                    />
+                    <Stack.Screen
+                        name="Settings"
+                        component={Settings}
+                        options={DrawerHeaderStyle}
+                    />
+                    {/* <Stack.Screen
                 name="Logout"
                 component={() => (<Text>Logout</Text>)}
                 options={DrawerHeaderStyle}
-
+                
             /> */}
-            </Drawer.Navigator>
+                </Drawer.Navigator>
+                :
+                <Stack.Navigator
+                    screenOptions={{
+                        drawerActiveTintColor: "white",
+                        drawerStyle: {
+                            backgroundColor: '#9AC4F8',
+                            width: 240,
+                        },
+                        headerBackTitle: "Back",
+                    }}
+                    initialRouteName="LoginScreen"
+                >
+                    <Stack.Screen name="LoginScreen" component={Login}
+                        options={{
+                            headerShown:false
+                        }}
+
+                    />
+                    <Stack.Screen name="SignupScreen" component={Signup} />
+                </Stack.Navigator>
+            }
         </>
     )
 }
@@ -78,33 +103,38 @@ function MainScreen() {
             }}
             initialRouteName="Home"
             activeColor="black"
-        // inactiveColor="#3e2465"
+            options={{
+                tabBarInactiveTintColor: "white",
+                tabBarActiveTintColor: "white",
+            }}
 
         >
             <Tab.Screen name="HomeScreen" component={Home}
                 options={{
                     headerShown: false,
                     tabBarShowLabel: false,
-                    tabBarIcon: ({ tintcolor }) => (
+                    tabBarInactiveTintColor: "gray",
+                    tabBarActiveTintColor: "white",
+                    tabBarIcon: ({ color }) => (
                         <Icon name="home"
                             type="font-awesome-5"
                             size={26}
-                            color="white" />
+                            color={color} />
                     ),
                 }}
-
-
             />
             <Tab.Screen
                 name="InvoiceScreen"
                 options={{
                     headerShown: false,
                     tabBarShowLabel: false,
-                    tabBarIcon: ({ tintcolor }) => (
+                    tabBarInactiveTintColor: "gray",
+                    tabBarActiveTintColor: "white",
+                    tabBarIcon: ({ color }) => (
                         <Icon name="file-invoice"
                             type="font-awesome-5"
                             size={26}
-                            color="white" />
+                            color={color} />
                     ),
                 }}
                 component={Invoice}
@@ -114,26 +144,39 @@ function MainScreen() {
                 options={{
                     headerShown: false,
                     tabBarShowLabel: false,
-                    tabBarIcon: ({ tintcolor }) => (
-                        <Icon name="product-hunt"
-                            type="font-awesome-5"
-                            size={26}
-                            color="white" />
-                    ),
+                    tabBarInactiveTintColor: "gray",
+                    tabBarActiveTintColor: "white",
+                    tabBarIcon: ({ color }) => {
+                        console.log(color)
+                        return (
+                            <Icon name="product-hunt"
+                                type="font-awesome-5"
+                                size={26}
+                                color={color}
+                            />
+                        )
+                    },
                 }}
                 component={Products}
             />
             <Tab.Screen
                 name="Services"
+
                 options={{
                     headerShown: false,
                     tabBarShowLabel: false,
-                    tabBarIcon: ({ tintcolor }) => (
-                        <Icon name="servicestack"
-                            type="font-awesome-5"
-                            size={26}
-                            color="white" />
-                    ),
+                    tabBarInactiveTintColor: "gray",
+                    tabBarActiveTintColor: "white",
+                    tabBarIcon: ({ color }) => {
+                        return (
+
+                            <Icon name="servicestack"
+                                type="font-awesome-5"
+                                size={26}
+                                color={color}
+                            />
+                        )
+                    },
                 }}
                 component={Services}
             />
