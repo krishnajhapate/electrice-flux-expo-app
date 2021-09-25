@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Alert } from 'react-native'
 import { Input } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames'
 import { useState } from 'react';
@@ -20,9 +20,33 @@ export default function Login({ navigation }) {
             await Firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
                 .then((res) => {
                     console.log(res)
+                    Alert.alert(
+                        "Welcome !!",
+                        "Account Logged Successfully",
+                        [
+                            {
+                                text: "Cancel",
+                                onPress: () => console.log("Cancel Pressed"),
+                                style: "cancel"
+                            },
+                            { text: "OK", onPress: () => console.log("OK Pressed") }
+                        ]
+                    );
                 })
         } catch (error) {
             console.log(error)
+            Alert.alert(
+                "Something went wrong",
+                error.message,
+                [
+                    {
+                        text: "Cancel",
+                        onPress: () => console.log("Cancel Pressed"),
+                        style: "cancel"
+                    },
+                    { text: "OK", onPress: () => console.log("OK Pressed") }
+                ]
+            );
         }
     }
     useEffect(() => {
