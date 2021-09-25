@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet } from 'react-native';
 import { ThemeProvider } from 'react-native-elements';
-import Screens from './screens';
+import Screens from './src/screens';
 import { NavigationContainer } from '@react-navigation/native';
 import 'react-native-gesture-handler';
 
