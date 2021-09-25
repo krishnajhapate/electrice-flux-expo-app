@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
-import { View, Text, ImageBackground } from 'react-native'
-import Icon from 'react-native-vector-icons/FontAwesome';
+import { View, Text } from 'react-native'
 import { Input } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames'
 import { useState } from 'react';
-import { set } from 'react-native-reanimated';
 import { Button } from 'react-native-elements'
 import { HELLO } from '@env'
 import Firebase from '../services/firebase';
@@ -32,13 +30,14 @@ export default function Login({ navigation }) {
         Firebase.auth().onAuthStateChanged((user) => {
             if (user != null) {
                 console.log(user);
+                
             }
             console.log(user)
         })
     }, [])
 
     return (
-        <View style={tw`h-full`}>
+        <View style={tw`h-full bg-blue-50`}>
 
             <View style={tw`h-2/4 w-5/6 mx-auto  top-1/4 px-3   `}>
 

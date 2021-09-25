@@ -71,15 +71,19 @@ export default function Screens() {
                         },
                         headerBackTitle: "Back",
                     }}
-                    initialRouteName="LoginScreen"
+                    initialRouteName="SignupScreen"
                 >
+                    <Stack.Screen name="SignupScreen" component={Signup}
+
+                        options={{
+                            headerShown: false
+                        }} />
                     <Stack.Screen name="LoginScreen" component={Login}
                         options={{
-                            headerShown:false
+                            headerShown: false
                         }}
 
                     />
-                    <Stack.Screen name="SignupScreen" component={Signup} />
                 </Stack.Navigator>
             }
         </>
