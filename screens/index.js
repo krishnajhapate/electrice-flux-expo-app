@@ -9,7 +9,6 @@ import Products from './Products';
 import Services from './Services';
 import Login from './Login';
 import Signup from './Signup';
-import tw from 'tailwind-react-native-classnames'
 import { Icon } from 'react-native-elements'
 
 const Stack = createNativeStackNavigator()
@@ -53,12 +52,14 @@ export default function Screens() {
                         component={Settings}
                         options={DrawerHeaderStyle}
                     />
+
                     {/* <Stack.Screen
                 name="Logout"
                 component={() => (<Text>Logout</Text>)}
                 options={DrawerHeaderStyle}
                 
             /> */}
+
                 </Drawer.Navigator>
                 :
                 <Stack.Navigator
