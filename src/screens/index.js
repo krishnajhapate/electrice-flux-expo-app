@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer'
@@ -10,6 +10,7 @@ import Services from './Services';
 import Login from './Login';
 import Signup from './Signup';
 import { Icon } from 'react-native-elements'
+import Firebase from '../services/firebase';
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -27,6 +28,15 @@ const DrawerHeaderStyle = {
 export default function Screens() {
     const [user, setUser] = useState(false)
 
+    useEffect(() => {
+        Firebase.auth().onAuthStateChanged((user) => {
+            if (user != null) {
+                console.log(user);
+                setUser(user)
+            }
+            console.log(user)
+        })
+    }, [])
     return (
         <>
 

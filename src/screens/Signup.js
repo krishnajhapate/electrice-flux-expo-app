@@ -1,19 +1,36 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text } from 'react-native'
 import { Input, Button } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames'
+import Firebase from '../services/firebase';
 
 
-export default function Signup({navigation}) {
+export default function Signup({ navigation }) {
     const [details, setDetails] = useState({
         name: '',
         email: '',
         password: '',
     })
 
-    const handleSignup = async () =>{
-        
+    const handleSignup = async () => {
+        try {
+            await Firebase.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
+                .then((res) => {
+                    console.log(res)
+                })
+        } catch (error) {
+            console.log(error)
+        }
     }
+    useEffect(() => {
+        Firebase.auth().onAuthStateChanged((user) => {
+            if (user != null) {
+                console.log(user);
+
+            }
+            console.log(user)
+        })
+    }, [])
     return (
         <View style={tw`h-full bg-blue-50`}>
 
@@ -57,13 +74,13 @@ export default function Signup({navigation}) {
                     />
                 </View>
 
-              
+
                 <Button
                     title="Sign Up"
                     onPress={() => handleSignup()}
                     buttonStyle={tw`my-2 py-3 rounded-xl bg-blue-600`}
                 />
-            
+
                 <Text style={tw`text-center text-gray-500 mt-4`} >Already have account?
                     <Text onPress={() => navigation.navigate("LoginScreen")} style={tw`text-blue-500`} > Login</Text>
                 </Text>

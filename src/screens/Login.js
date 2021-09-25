@@ -16,7 +16,6 @@ export default function Login({ navigation }) {
     console.log(HELLO)
 
     const handleLogin = async () => {
-        console.log(credentials)
         try {
             await Firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
                 .then((res) => {
@@ -47,6 +46,7 @@ export default function Login({ navigation }) {
                     <Input
                         placeholder='Email ID'
                         leftIcon={{ type: 'font-awesome-5', name: 'at', color: 'gray', marginRight: 7, size: 20 }}
+                        value={credentials.email}
                         style={tw`text-base  border-0 `}
                         onChangeText={value => setCredentials({ ...credentials, email: value })}
                     />
