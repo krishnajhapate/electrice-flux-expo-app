@@ -6,7 +6,7 @@ import tw from 'tailwind-react-native-classnames'
 import { useState } from 'react';
 import { set } from 'react-native-reanimated';
 import { Button } from 'react-native-elements'
-
+import {HELLO} from '@env'
 
 
 export default function Login({ navigation }) {
@@ -14,6 +14,7 @@ export default function Login({ navigation }) {
         email: '',
         password: ''
     })
+    console.log(HELLO)
 
     return (
         <ImageBackground source={{ uri: 'https://source.unsplash.com/WLUHO9A_xik/1600x900' }} resizeMode="cover" style={tw`h-full`}>
