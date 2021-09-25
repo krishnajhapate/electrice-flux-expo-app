@@ -4,6 +4,7 @@ import { StyleSheet } from 'react-native';
 import { ThemeProvider } from 'react-native-elements';
 import Screens from './screens';
 import { NavigationContainer } from '@react-navigation/native';
+import 'react-native-gesture-handler';
 
 export default function App() {
   return (
