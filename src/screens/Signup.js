@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, Alert } from 'react-native'
 import { Input, Button } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames'
 import Firebase from '../services/firebase';
@@ -14,12 +14,36 @@ export default function Signup({ navigation }) {
 
     const handleSignup = async () => {
         try {
-            await Firebase.auth().createUserWithEmailAndPassword(credentials.email, credentials.password)
+            await Firebase.auth().createUserWithEmailAndPassword(details.email, details.password)
                 .then((res) => {
                     console.log(res)
+                    Alert.alert(
+                        "Account Created Successfully",
+                        "Now you can login to enjoy",
+                        [
+                            {
+                                text: "Cancel",
+                                onPress: () => console.log("Cancel Pressed"),
+                                style: "cancel"
+                            },
+                            { text: "OK", onPress: () => console.log("OK Pressed") }
+                        ]
+                    );
                 })
         } catch (error) {
-            console.log(error)
+            // console.log(error.message)
+            Alert.alert(
+                "Something went wrong",
+                error.message,
+                [
+                    {
+                        text: "Cancel",
+                        onPress: () => console.log("Cancel Pressed"),
+                        style: "cancel"
+                    },
+                    { text: "OK", onPress: () => console.log("OK Pressed") }
+                ]
+            );
         }
     }
     useEffect(() => {
@@ -44,7 +68,7 @@ export default function Signup({ navigation }) {
                         leftIcon={{ type: 'font-awesome-5', name: 'at', color: 'gray', marginRight: 7, size: 20 }}
                         style={tw`text-base `}
                         value={details.email}
-                        onChangeText={value => setDetails({ ...credentials, email: value })}
+                        onChangeText={value => setDetails({ ...details, email: value })}
                     />
                 </View>
 
@@ -57,7 +81,7 @@ export default function Signup({ navigation }) {
                         }}
                         value={details.name}
                         style={tw`text-base `}
-                        onChangeText={value => setDetails({ ...credentials, name: value })}
+                        onChangeText={value => setDetails({ ...details, name: value })}
                     />
                 </View>
                 <View style={tw` my-2 mb-7`} >
@@ -70,7 +94,7 @@ export default function Signup({ navigation }) {
                         secureTextEntry={true}
                         value={details.password}
                         style={tw`text-base `}
-                        onChangeText={value => setDetails({ ...credentials, password: value })}
+                        onChangeText={value => setDetails({ ...details, password: value })}
                     />
                 </View>
 

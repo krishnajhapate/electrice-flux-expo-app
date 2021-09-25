@@ -29,7 +29,6 @@ export default function Login({ navigation }) {
         Firebase.auth().onAuthStateChanged((user) => {
             if (user != null) {
                 console.log(user);
-                
             }
             console.log(user)
         })

@@ -34,7 +34,7 @@ export default function Screens() {
                 console.log(user);
                 setUser(user)
             }
-            console.log(user)
+            setUser(false)
         })
     }, [])
     return (
@@ -63,12 +63,12 @@ export default function Screens() {
                         options={DrawerHeaderStyle}
                     />
 
-                    {/* <Stack.Screen
-                name="Logout"
-                component={() => (<Text>Logout</Text>)}
-                options={DrawerHeaderStyle}
-                
-            /> */}
+                    <Stack.Screen
+                        name="Logout"
+                        component={Logout}
+                        options={DrawerHeaderStyle}
+
+                    />
 
                 </Drawer.Navigator>
                 :
@@ -81,19 +81,19 @@ export default function Screens() {
                         },
                         headerBackTitle: "Back",
                     }}
-                    initialRouteName="SignupScreen"
+                    initialRouteName="LoginScreen"
                 >
-                    <Stack.Screen name="SignupScreen" component={Signup}
-
-                        options={{
-                            headerShown: false
-                        }} />
                     <Stack.Screen name="LoginScreen" component={Login}
                         options={{
                             headerShown: false
                         }}
 
                     />
+                    <Stack.Screen name="SignupScreen" component={Signup}
+
+                        options={{
+                            headerShown: false
+                        }} />
                 </Stack.Navigator>
             }
         </>
@@ -197,4 +197,13 @@ function MainScreen() {
             />
         </ Tab.Navigator>
     );
+}
+
+const Logout = ({ navigation }) => {
+    // useEffect(() => {
+    //     Firebase.auth().signOut()
+    // }, [])
+    return (
+        <Text>Logout</Text>
+    )
 }
