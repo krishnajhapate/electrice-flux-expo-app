@@ -166,8 +166,8 @@ function MainScreen() {
                     tabBarActiveTintColor: "white",
                     tabBarIcon: ({ color }) => {
                         return (
-                            <Icon name="product-hunt"
-                                type="font-awesome-5"
+                            <Icon name="category"
+                                type="material"
                                 size={26}
                                 color={color}
                             />

@@ -12,3 +12,12 @@ export default function Products() {
         </View>
     )
 }
+
+const tempData = [
+    {
+        id:1,
+        name:"PVC Pipe",
+        price:340,
+        mrp:120,
+    }
+]
