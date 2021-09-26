@@ -20,6 +20,7 @@ export default function Login({ navigation }) {
             await Firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
                 .then((res) => {
                     console.log(res)
+                    navigation.navigate("Home")
                     Alert.alert(
                         "Welcome !!",
                         "Account Logged Successfully",

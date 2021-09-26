@@ -11,6 +11,8 @@ import Login from './Login';
 import Signup from './Signup';
 import { Icon } from 'react-native-elements'
 import Firebase from '../services/firebase';
+import { View ,Text } from 'react-native';
+import Logout from './Logout';
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -26,17 +28,17 @@ const DrawerHeaderStyle = {
 }
 
 export default function Screens() {
-    const [user, setUser] = useState(false)
+    const [user, setUser] = useState(true)
 
-    useEffect(() => {
-        Firebase.auth().onAuthStateChanged((user) => {
-            if (user != null) {
-                console.log(user);
-                setUser(user)
-            }
-            setUser(false)
-        })
-    }, [])
+    // useEffect(() => {
+    //     Firebase.auth().onAuthStateChanged((user) => {
+    //         if (user != null) {
+    //             console.log(user);
+    //             setUser(user)
+    //         }
+    //         setUser(false)
+    //     })
+    // }, [])
     return (
         <>
 
@@ -199,11 +201,3 @@ function MainScreen() {
     );
 }
 
-const Logout = ({ navigation }) => {
-    // useEffect(() => {
-    //     Firebase.auth().signOut()
-    // }, [])
-    return (
-        <Text>Logout</Text>
-    )
-}
