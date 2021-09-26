@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer'
@@ -29,8 +29,7 @@ const DrawerHeaderStyle = {
 }
 
 export default function Screens() {
-    // const [user, setUser] = useState(false)
-    const {user,hasErrors} = useSelector(state=>state.loginReducer)
+    const {user} = useSelector(state=>state.loginReducer)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -103,13 +102,6 @@ export default function Screens() {
     )
 }
 
-const TabOptions = {
-    headerShown: false,
-
-}
-const TabStyles = {
-
-}
 
 function MainScreen() {
     return (
