@@ -11,6 +11,9 @@ import Login from './Login';
 import Signup from './Signup';
 import { Icon } from 'react-native-elements'
 import Logout from './Logout';
+import { useDispatch, useSelector } from 'react-redux';
+import Firebase from '../services/firebase';
+import { resetLogin, userLoggedin } from '../reducers/authReducer';
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -26,7 +29,16 @@ const DrawerHeaderStyle = {
 }
 
 export default function Screens() {
-    const [user, setUser] = useState(false)
+    // const [user, setUser] = useState(false)
+    const {user,hasErrors} = useSelector(state=>state.loginReducer)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        Firebase.auth().onAuthStateChanged(user=>{
+            if(user) return dispatch(userLoggedin(user))
+            return dispatch(resetLogin())
+        })
+    }, [dispatch])
 
     return (
         <>
@@ -153,7 +165,6 @@ function MainScreen() {
                     tabBarInactiveTintColor: "gray",
                     tabBarActiveTintColor: "white",
                     tabBarIcon: ({ color }) => {
-                        console.log(color)
                         return (
                             <Icon name="product-hunt"
                                 type="font-awesome-5"

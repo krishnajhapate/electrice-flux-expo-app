@@ -22,7 +22,23 @@ export const loginSlice = createSlice({
         user: {}
     },
     reducers: {
-        resetLogin:(state)=> state
+        resetLogin:(state)=> ({
+            isLogin: false,
+            isSuccess: false,
+            hasErrors: false,
+            isPending:false,
+            user: {}
+        }),
+        userLoggedin:(state,payload)=>{
+            console.log(payload)
+            return({
+                isLogin: false,
+                isSuccess: false,
+                hasErrors: false,
+                isPending:false,
+                user: {}
+            })
+        }
     },
     extraReducers: {
         [loginWithEmailPassword.pending]: (state, action) => ({
@@ -55,7 +71,7 @@ export const loginSlice = createSlice({
       },
 })
 
-export const { resetLogin } = loginSlice.actions
+export const { resetLogin ,userLoggedin } = loginSlice.actions
 
 const authReducers = {
     loginReducer: loginSlice.reducer,

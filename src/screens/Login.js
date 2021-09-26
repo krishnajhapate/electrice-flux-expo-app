@@ -4,8 +4,7 @@ import { Input } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames'
 import { useState } from 'react';
 import { Button } from 'react-native-elements'
-import Firebase from '../services/firebase';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginWithEmailPassword } from '../reducers/authReducer';
 
 
@@ -15,7 +14,7 @@ export default function Login({ navigation }) {
         password: ''
     })
     const dispatch = useDispatch()
-
+    const {isPending} = useSelector(state=>state.loginReducer)
     const handleLogin = () => {
         dispatch(loginWithEmailPassword(credentials))
 
@@ -53,15 +52,10 @@ export default function Login({ navigation }) {
         //     );
         // }
     }
-    useEffect(() => {
+    // useEffect(()=>{
 
-        Firebase.auth().onAuthStateChanged((user) => {
-            if (user != null) {
-                console.log(user);
-            }
-            console.log(user)
-        })
-    }, [])
+    // },[])
+  
 
     return (
         <View style={tw`h-full bg-blue-50`}>
@@ -99,6 +93,7 @@ export default function Login({ navigation }) {
                 <Button
                     title="Login"
                     onPress={() => handleLogin()}
+                    loading={isPending}
                     buttonStyle={tw`my-2 py-3 rounded-xl bg-blue-600`}
                 />
                 {/* <Button
