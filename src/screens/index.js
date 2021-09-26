@@ -14,6 +14,8 @@ import Logout from './Logout';
 import { useDispatch, useSelector } from 'react-redux';
 import Firebase from '../services/firebase';
 import { resetLogin, userLoggedin } from '../reducers/authReducer';
+import tw from 'tailwind-react-native-classnames'
+
 
 const Stack = createNativeStackNavigator()
 const Drawer = createDrawerNavigator()
@@ -52,10 +54,7 @@ export default function Screens() {
                 <Drawer.Navigator
                     screenOptions={{
                         drawerActiveTintColor: "white",
-                        drawerStyle: {
-                            backgroundColor: '#9AC4F8',
-                            width: 240,
-                        },
+                        drawerStyle: [tw`rounded-xl `,{backgroundColor:"#9AC4F8"}],
                         headerBackTitle: "Back",
                     }}
                 >
@@ -63,6 +62,11 @@ export default function Screens() {
                         name="Home"
                         component={MainScreen}
                         options={DrawerHeaderStyle}
+                        screenOptions={{
+                            headerShown:false,
+                            headerStyle:[tw`rounded-xl `,{backgroundColor:"#9AC4F8"}]
+                        }}
+                        headerStyle={[tw`rounded-xl h-16`,{backgroundColor:"#9AC4F8"}]}
 
                     />
                     <Stack.Screen
@@ -113,9 +117,7 @@ function MainScreen() {
     return (
         <Tab.Navigator
             screenOptions={{
-                tabBarStyle: {
-                    backgroundColor: "#9AC4F8",
-                },
+                tabBarStyle: [tw`rounded-xl h-16`,{backgroundColor:"#9AC4F8"}],
             }}
             initialRouteName="Home"
             activeColor="black"
@@ -129,7 +131,7 @@ function MainScreen() {
                 options={{
                     headerShown: false,
                     tabBarShowLabel: false,
-                    tabBarInactiveTintColor: "gray",
+                    tabBarInactiveTintColor: "#3d85c6",
                     tabBarActiveTintColor: "white",
                     tabBarIcon: ({ color }) => (
                         <Icon name="home"
@@ -144,7 +146,7 @@ function MainScreen() {
                 options={{
                     headerShown: false,
                     tabBarShowLabel: false,
-                    tabBarInactiveTintColor: "gray",
+                    tabBarInactiveTintColor: "#3d85c6",
                     tabBarActiveTintColor: "white",
                     tabBarIcon: ({ color }) => (
                         <Icon name="file-invoice"
@@ -160,7 +162,7 @@ function MainScreen() {
                 options={{
                     headerShown: false,
                     tabBarShowLabel: false,
-                    tabBarInactiveTintColor: "gray",
+                    tabBarInactiveTintColor: "#3d85c6",
                     tabBarActiveTintColor: "white",
                     tabBarIcon: ({ color }) => {
                         return (
@@ -180,7 +182,7 @@ function MainScreen() {
                 options={{
                     headerShown: false,
                     tabBarShowLabel: false,
-                    tabBarInactiveTintColor: "gray",
+                    tabBarInactiveTintColor: "#3d85c6",
                     tabBarActiveTintColor: "white",
                     tabBarIcon: ({ color }) => {
                         return (
