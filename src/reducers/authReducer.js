@@ -11,6 +11,7 @@ export const loginWithEmailPassword = createAsyncThunk(
         return response.user
     }
 )
+
 export const logout = createAsyncThunk('users/logout'
     , async (thunkAPI, { dispatch }) => {
         console.log(dispatch, thunkAPI)
@@ -18,6 +19,7 @@ export const logout = createAsyncThunk('users/logout'
         return dispatch(resetLogin())
     }
 )
+
 export const registerWithEmailPassword = createAsyncThunk(
     'users/register',
     async ({ email, password }, thunkAPI,) => {
