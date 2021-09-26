@@ -4,8 +4,9 @@ import { Input } from 'react-native-elements';
 import tw from 'tailwind-react-native-classnames'
 import { useState } from 'react';
 import { Button } from 'react-native-elements'
-import { HELLO } from '@env'
 import Firebase from '../services/firebase';
+import { useDispatch } from 'react-redux';
+import { loginWithEmailPassword } from '../reducers/authReducer';
 
 
 export default function Login({ navigation }) {
@@ -13,44 +14,47 @@ export default function Login({ navigation }) {
         email: '',
         password: ''
     })
-    console.log(HELLO)
+    const dispatch = useDispatch()
 
-    const handleLogin = async () => {
-        try {
-            await Firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
-                .then((res) => {
-                    console.log(res)
-                    navigation.navigate("Home")
-                    Alert.alert(
-                        "Welcome !!",
-                        "Account Logged Successfully",
-                        [
-                            {
-                                text: "Cancel",
-                                onPress: () => console.log("Cancel Pressed"),
-                                style: "cancel"
-                            },
-                            { text: "OK", onPress: () => console.log("OK Pressed") }
-                        ]
-                    );
-                })
-        } catch (error) {
-            console.log(error)
-            Alert.alert(
-                "Something went wrong",
-                error.message,
-                [
-                    {
-                        text: "Cancel",
-                        onPress: () => console.log("Cancel Pressed"),
-                        style: "cancel"
-                    },
-                    { text: "OK", onPress: () => console.log("OK Pressed") }
-                ]
-            );
-        }
+    const handleLogin = () => {
+        dispatch(loginWithEmailPassword(credentials))
+
+        // try {
+        //     await Firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
+        //         .then((res) => {
+        //             console.log(res)
+        //             navigation.navigate("Home")
+        //             Alert.alert(
+        //                 "Welcome !!",
+        //                 "Account Logged Successfully",
+        //                 [
+        //                     {
+        //                         text: "Cancel",
+        //                         onPress: () => console.log("Cancel Pressed"),
+        //                         style: "cancel"
+        //                     },
+        //                     { text: "OK", onPress: () => console.log("OK Pressed") }
+        //                 ]
+        //             );
+        //         })
+        // } catch (error) {
+        //     console.log(error)
+        //     Alert.alert(
+        //         "Something went wrong",
+        //         error.message,
+        //         [
+        //             {
+        //                 text: "Cancel",
+        //                 onPress: () => console.log("Cancel Pressed"),
+        //                 style: "cancel"
+        //             },
+        //             { text: "OK", onPress: () => console.log("OK Pressed") }
+        //         ]
+        //     );
+        // }
     }
     useEffect(() => {
+
         Firebase.auth().onAuthStateChanged((user) => {
             if (user != null) {
                 console.log(user);

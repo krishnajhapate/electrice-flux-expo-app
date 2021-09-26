@@ -10,8 +10,6 @@ import Services from './Services';
 import Login from './Login';
 import Signup from './Signup';
 import { Icon } from 'react-native-elements'
-import Firebase from '../services/firebase';
-import { View ,Text } from 'react-native';
 import Logout from './Logout';
 
 const Stack = createNativeStackNavigator()
@@ -28,17 +26,8 @@ const DrawerHeaderStyle = {
 }
 
 export default function Screens() {
-    const [user, setUser] = useState(true)
+    const [user, setUser] = useState(false)
 
-    // useEffect(() => {
-    //     Firebase.auth().onAuthStateChanged((user) => {
-    //         if (user != null) {
-    //             console.log(user);
-    //             setUser(user)
-    //         }
-    //         setUser(false)
-    //     })
-    // }, [])
     return (
         <>
 
