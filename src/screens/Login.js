@@ -14,7 +14,7 @@ export default function Login({ navigation }) {
         password: ''
     })
     const dispatch = useDispatch()
-    const {isPending} = useSelector(state=>state.loginReducer)
+    const {isPending ,hasErrors} = useSelector(state=>state.loginReducer)
     const handleLogin = () => {
         dispatch(loginWithEmailPassword(credentials))
 
@@ -52,9 +52,20 @@ export default function Login({ navigation }) {
         //     );
         // }
     }
-    // useEffect(()=>{
-
-    // },[])
+    useEffect(()=>{
+        Alert.alert(
+                    "Something went wrong",
+                    hasErrors,
+                    [
+                        {
+                            text: "Cancel",
+                            onPress: () => console.log("Cancel Pressed"),
+                            style: "cancel"
+                        },
+                        { text: "OK", onPress: () => console.log("OK Pressed") }
+                    ]
+                );
+    },[hasErrors])
   
 
     return (
