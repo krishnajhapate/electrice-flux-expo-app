@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, Alert } from 'react-native'
 import { Input, Button } from 'react-native-elements';
+import { useDispatch, useSelector } from 'react-redux';
 import tw from 'tailwind-react-native-classnames'
+import { registerWithEmailPassword } from '../reducers/authReducer';
 import Firebase from '../services/firebase';
 
 
@@ -11,40 +13,26 @@ export default function Signup({ navigation }) {
         email: '',
         password: '',
     })
+    const dispatch = useDispatch()
+    const { isPending, hasErrors } = useSelector(state => state.registerReducer)
+
+    useEffect(() => {
+        if (hasErrors) return Alert.alert(
+            "Something went wrong",
+            hasErrors,
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+                { text: "OK", onPress: () => console.log("OK Pressed") }
+            ]
+        );
+    }, [hasErrors])
 
     const handleSignup = async () => {
-        try {
-            await Firebase.auth().createUserWithEmailAndPassword(details.email, details.password)
-                .then((res) => {
-                    console.log(res)
-                    Alert.alert(
-                        "Account Created Successfully",
-                        "Now you can login to enjoy",
-                        [
-                            {
-                                text: "Cancel",
-                                onPress: () => console.log("Cancel Pressed"),
-                                style: "cancel"
-                            },
-                            { text: "OK", onPress: () => console.log("OK Pressed") }
-                        ]
-                    );
-                })
-        } catch (error) {
-            // console.log(error.message)
-            Alert.alert(
-                "Something went wrong",
-                error.message,
-                [
-                    {
-                        text: "Cancel",
-                        onPress: () => console.log("Cancel Pressed"),
-                        style: "cancel"
-                    },
-                    { text: "OK", onPress: () => console.log("OK Pressed") }
-                ]
-            );
-        }
+       dispatch(registerWithEmailPassword(details))
     }
     useEffect(() => {
         Firebase.auth().onAuthStateChanged((user) => {
@@ -101,6 +89,7 @@ export default function Signup({ navigation }) {
 
                 <Button
                     title="Sign Up"
+                    loading={isPending}
                     onPress={() => handleSignup()}
                     buttonStyle={tw`my-2 py-3 rounded-xl bg-blue-600`}
                 />

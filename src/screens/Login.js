@@ -20,6 +20,7 @@ export default function Login({ navigation }) {
         dispatch(loginWithEmailPassword(credentials))
 
     }
+    
     useEffect(() => {
         if (hasErrors) return Alert.alert(
             "Something went wrong",

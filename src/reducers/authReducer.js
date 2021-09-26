@@ -18,6 +18,17 @@ export const logout = createAsyncThunk('users/logout'
     return  dispatch(resetLogin())
 }
 )
+export const registerWithEmailPassword = createAsyncThunk(
+    'users/register',
+    async ({ email, password }, thunkAPI,) => {
+        // console.log(email, password)
+        const response = await Firebase.auth().createUserWithEmailAndPassword(email, password)
+        console.log(response)
+        return response
+    }
+)
+
+
 
 export const loginSlice = createSlice({
     name: 'login',
@@ -78,10 +89,62 @@ export const loginSlice = createSlice({
       },
 })
 
+export const registerSlice = createSlice({
+    name: 'login',
+    initialState: {
+        isLogin: false,
+        isSuccess: false,
+        hasErrors: false,
+        isPending:false,
+        user: null
+    },
+    reducers: {
+        resetRegister:(state)=> ({
+            isLogin: false,
+            isSuccess: false,
+            hasErrors: false,
+            isPending:false,
+            user: null
+        }),
+        
+    },
+    extraReducers: {
+        [registerWithEmailPassword.pending]: (state, action) => ({
+            isLogin: false,
+            isSuccess: false,
+            hasErrors: false,
+            isPending:true,
+            user: null
+        }),
+        [registerWithEmailPassword.fulfilled]: (state, payload) => {
+            console.log(payload)
+            return({
+                isLogin: true,
+                isSuccess: true,
+                hasErrors: false,
+                isPending:false,
+                user: payload
+            })
+        },
+        [registerWithEmailPassword.rejected]: (state, payload) => {
+            console.log(payload.error.message)
+            return({
+                isLogin: false,
+                isSuccess: false,
+                hasErrors: payload.error.message,
+                isPending:false,
+                user: null
+            })
+        },
+      },
+})
+
 export const { resetLogin ,userLoggedin } = loginSlice.actions
+export const { resetRegister} = registerSlice.actions
 
 const authReducers = {
     loginReducer: loginSlice.reducer,
+    registerReducer: registerSlice.reducer,
 }
 
 export default authReducers
