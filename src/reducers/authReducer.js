@@ -7,10 +7,17 @@ export const loginWithEmailPassword = createAsyncThunk(
     async ({ email, password }, thunkAPI,) => {
         // console.log(email, password)
         const response = await Firebase.auth().signInWithEmailAndPassword(email, password)
-        return response
+        console.log(response)
+        return response.user
     }
 )
-
+export const logout = createAsyncThunk('users/logout'
+, async(thunkAPI,{dispatch}) =>{
+    console.log(dispatch,thunkAPI)
+    await Firebase.auth().signOut()
+    return  dispatch(resetLogin())
+}
+)
 
 export const loginSlice = createSlice({
     name: 'login',
@@ -19,7 +26,7 @@ export const loginSlice = createSlice({
         isSuccess: false,
         hasErrors: false,
         isPending:false,
-        user: {}
+        user: null
     },
     reducers: {
         resetLogin:(state)=> ({
@@ -27,7 +34,7 @@ export const loginSlice = createSlice({
             isSuccess: false,
             hasErrors: false,
             isPending:false,
-            user: {}
+            user: null
         }),
         userLoggedin:(state,payload)=>{
             console.log(payload)
@@ -36,7 +43,7 @@ export const loginSlice = createSlice({
                 isSuccess: false,
                 hasErrors: false,
                 isPending:false,
-                user: {}
+                user: null
             })
         }
     },
@@ -46,7 +53,7 @@ export const loginSlice = createSlice({
             isSuccess: false,
             hasErrors: false,
             isPending:true,
-            user: {}
+            user: null
         }),
         [loginWithEmailPassword.fulfilled]: (state, payload) => {
             console.log(payload)
@@ -65,7 +72,7 @@ export const loginSlice = createSlice({
                 isSuccess: false,
                 hasErrors: payload.error.message,
                 isPending:false,
-                user: {}
+                user: null
             })
         },
       },

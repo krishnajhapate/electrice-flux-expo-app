@@ -14,59 +14,27 @@ export default function Login({ navigation }) {
         password: ''
     })
     const dispatch = useDispatch()
-    const {isPending ,hasErrors} = useSelector(state=>state.loginReducer)
+    const { isPending, hasErrors } = useSelector(state => state.loginReducer)
+
     const handleLogin = () => {
         dispatch(loginWithEmailPassword(credentials))
 
-        // try {
-        //     await Firebase.auth().signInWithEmailAndPassword(credentials.email, credentials.password)
-        //         .then((res) => {
-        //             console.log(res)
-        //             navigation.navigate("Home")
-        //             Alert.alert(
-        //                 "Welcome !!",
-        //                 "Account Logged Successfully",
-        //                 [
-        //                     {
-        //                         text: "Cancel",
-        //                         onPress: () => console.log("Cancel Pressed"),
-        //                         style: "cancel"
-        //                     },
-        //                     { text: "OK", onPress: () => console.log("OK Pressed") }
-        //                 ]
-        //             );
-        //         })
-        // } catch (error) {
-        //     console.log(error)
-        //     Alert.alert(
-        //         "Something went wrong",
-        //         error.message,
-        //         [
-        //             {
-        //                 text: "Cancel",
-        //                 onPress: () => console.log("Cancel Pressed"),
-        //                 style: "cancel"
-        //             },
-        //             { text: "OK", onPress: () => console.log("OK Pressed") }
-        //         ]
-        //     );
-        // }
     }
-    useEffect(()=>{
-        Alert.alert(
-                    "Something went wrong",
-                    hasErrors,
-                    [
-                        {
-                            text: "Cancel",
-                            onPress: () => console.log("Cancel Pressed"),
-                            style: "cancel"
-                        },
-                        { text: "OK", onPress: () => console.log("OK Pressed") }
-                    ]
-                );
-    },[hasErrors])
-  
+    useEffect(() => {
+        if (hasErrors) return Alert.alert(
+            "Something went wrong",
+            hasErrors,
+            [
+                {
+                    text: "Cancel",
+                    onPress: () => console.log("Cancel Pressed"),
+                    style: "cancel"
+                },
+                { text: "OK", onPress: () => console.log("OK Pressed") }
+            ]
+        );
+    }, [hasErrors])
+
 
     return (
         <View style={tw`h-full bg-blue-50`}>

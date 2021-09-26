@@ -34,10 +34,15 @@ export default function Screens() {
 
     useEffect(() => {
         Firebase.auth().onAuthStateChanged(user=>{
+            console.log(user)
             if(user) return dispatch(userLoggedin(user))
             return dispatch(resetLogin())
         })
     }, [dispatch])
+
+    useEffect(()=>{
+        console.log(user)
+    },[user])
 
     return (
         <>

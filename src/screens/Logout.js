@@ -1,14 +1,17 @@
 import React, { useEffect } from "react"
 import { View } from "react-native"
 import { Text } from "react-native-elements"
+// import { useDispatch } from "react-redux"
+// import {  resetLogin } from "../reducers/authReducer"
 import Firebase from "../services/firebase"
 
 const Logout = ({ navigation }) => {
-
+    // const dispatch = useDispatch()
     useEffect(() => {
         Firebase.auth().signOut()
-        navigation.navigate("LoginScreen")
-    })
+        // dispatch(resetLogin())
+    },[])
+
 
     return (
         <View>
