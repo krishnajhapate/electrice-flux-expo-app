@@ -28,6 +28,7 @@
     "react-native-screens": "~3.4.0",
     "react-native-vector-icons": "^8.1.0",
     "react-native-web": "~0.13.12",
+    "react-redux": "^7.2.5",
     "tailwind-react-native-classnames": "^1.5.1"
   },
   "devDependencies": {
