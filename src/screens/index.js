@@ -56,7 +56,10 @@ export default function Screens() {
                         drawerActiveTintColor: "white",
                         drawerStyle: [tw`rounded-xl `,{backgroundColor:"#9AC4F8"}],
                         headerBackTitle: "Back",
+                        headerStyle:[tw`rounded-xl h-16`,{backgroundColor:"#9AC4F8"}],
+                        DrawerHeaderStyle:[tw`rounded-xl `,{backgroundColor:"black"}]
                     }}
+
                 >
                     <Drawer.Screen
                         name="Home"
