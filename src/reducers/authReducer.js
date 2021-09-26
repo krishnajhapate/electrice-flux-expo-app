@@ -12,11 +12,11 @@ export const loginWithEmailPassword = createAsyncThunk(
     }
 )
 export const logout = createAsyncThunk('users/logout'
-, async(thunkAPI,{dispatch}) =>{
-    console.log(dispatch,thunkAPI)
-    await Firebase.auth().signOut()
-    return  dispatch(resetLogin())
-}
+    , async (thunkAPI, { dispatch }) => {
+        console.log(dispatch, thunkAPI)
+        await Firebase.auth().signOut()
+        return dispatch(resetLogin())
+    }
 )
 export const registerWithEmailPassword = createAsyncThunk(
     'users/register',
@@ -28,6 +28,13 @@ export const registerWithEmailPassword = createAsyncThunk(
     }
 )
 
+export const storeInFirestore = createAsyncThunk('users/register',
+    async ({ email, uid }, thunkAPI,) => {
+        // console.log(email, password)
+        const response = await Firebase.auth().createUserWithEmailAndPassword(email, password)
+        console.log(response)
+        return response
+    })
 
 
 export const loginSlice = createSlice({
@@ -36,24 +43,24 @@ export const loginSlice = createSlice({
         isLogin: false,
         isSuccess: false,
         hasErrors: false,
-        isPending:false,
+        isPending: false,
         user: null
     },
     reducers: {
-        resetLogin:(state)=> ({
+        resetLogin: (state) => ({
             isLogin: false,
             isSuccess: false,
             hasErrors: false,
-            isPending:false,
+            isPending: false,
             user: null
         }),
-        userLoggedin:(state,payload)=>{
+        userLoggedin: (state, payload) => {
             console.log(payload)
-            return({
-                isLogin: false,
+            return ({
+                isLogin: true,
                 isSuccess: false,
                 hasErrors: false,
-                isPending:false,
+                isPending: false,
                 user: null
             })
         }
@@ -63,30 +70,30 @@ export const loginSlice = createSlice({
             isLogin: false,
             isSuccess: false,
             hasErrors: false,
-            isPending:true,
+            isPending: true,
             user: null
         }),
         [loginWithEmailPassword.fulfilled]: (state, payload) => {
             console.log(payload)
-            return({
+            return ({
                 isLogin: true,
                 isSuccess: true,
                 hasErrors: false,
-                isPending:false,
+                isPending: false,
                 user: payload
             })
         },
         [loginWithEmailPassword.rejected]: (state, payload) => {
             console.log(payload.error.message)
-            return({
+            return ({
                 isLogin: false,
                 isSuccess: false,
                 hasErrors: payload.error.message,
-                isPending:false,
+                isPending: false,
                 user: null
             })
         },
-      },
+    },
 })
 
 export const registerSlice = createSlice({
@@ -95,52 +102,52 @@ export const registerSlice = createSlice({
         isLogin: false,
         isSuccess: false,
         hasErrors: false,
-        isPending:false,
+        isPending: false,
         user: null
     },
     reducers: {
-        resetRegister:(state)=> ({
+        resetRegister: (state) => ({
             isLogin: false,
             isSuccess: false,
             hasErrors: false,
-            isPending:false,
+            isPending: false,
             user: null
         }),
-        
+
     },
     extraReducers: {
         [registerWithEmailPassword.pending]: (state, action) => ({
             isLogin: false,
             isSuccess: false,
             hasErrors: false,
-            isPending:true,
+            isPending: true,
             user: null
         }),
         [registerWithEmailPassword.fulfilled]: (state, payload) => {
             console.log(payload)
-            return({
+            return ({
                 isLogin: true,
                 isSuccess: true,
                 hasErrors: false,
-                isPending:false,
+                isPending: false,
                 user: payload
             })
         },
         [registerWithEmailPassword.rejected]: (state, payload) => {
             console.log(payload.error.message)
-            return({
+            return ({
                 isLogin: false,
                 isSuccess: false,
                 hasErrors: payload.error.message,
-                isPending:false,
+                isPending: false,
                 user: null
             })
         },
-      },
+    },
 })
 
-export const { resetLogin ,userLoggedin } = loginSlice.actions
-export const { resetRegister} = registerSlice.actions
+export const { resetLogin, userLoggedin } = loginSlice.actions
+export const { resetRegister } = registerSlice.actions
 
 const authReducers = {
     loginReducer: loginSlice.reducer,

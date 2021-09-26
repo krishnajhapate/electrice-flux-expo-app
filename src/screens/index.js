@@ -29,25 +29,25 @@ const DrawerHeaderStyle = {
 }
 
 export default function Screens() {
-    const {user} = useSelector(state=>state.loginReducer)
+    const { isLogin } = useSelector(state => state.loginReducer)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        Firebase.auth().onAuthStateChanged(user=>{
+        Firebase.auth().onAuthStateChanged(user => {
             console.log(user)
-            if(user) return dispatch(userLoggedin(user))
+            if (user) return dispatch(userLoggedin(user))
             return dispatch(resetLogin())
         })
     }, [dispatch])
 
-    useEffect(()=>{
-        console.log(user)
-    },[user])
+    useEffect(() => {
+        console.log(isLogin)
+    }, [isLogin])
 
     return (
         <>
 
-            {user ?
+            {isLogin ?
                 <Drawer.Navigator
                     screenOptions={{
                         drawerActiveTintColor: "white",
