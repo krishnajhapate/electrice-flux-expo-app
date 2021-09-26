@@ -31,8 +31,8 @@ const DrawerHeaderStyle = {
 }
 
 export default function Screens() {
-    // const { isLogin } = useSelector(state => state.loginReducer)
-    const [isLogin] = useState(true)
+    const { isLogin } = useSelector(state => state.loginReducer)
+    // const [isLogin] = useState(true)
     const dispatch = useDispatch()
 
     useEffect(() => {
