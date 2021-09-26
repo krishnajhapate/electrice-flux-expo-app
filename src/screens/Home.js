@@ -37,7 +37,10 @@ export default function Home({navigation}) {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   mr-7 mb-8`}>
+                <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   mr-7 mb-8`}
+                    onPress={()=>navigation.navigate("Services")}
+                
+                >
                     <View style={tw``} >
                         <Icon
                             name='servicestack'
@@ -48,7 +51,9 @@ export default function Home({navigation}) {
                         <Text style={tw`text-center mt-4 text-base text-gray-600 `} >Services</Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   ml-2 mb-8`}>
+                <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   ml-2 mb-8`}
+                    onPress={()=>navigation.navigate("InvoiceScreen")}
+                    >
                     <View style={tw``} >
                         <Icon
                             name='receipt'
@@ -60,7 +65,9 @@ export default function Home({navigation}) {
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   mr-7 mb-8`}>
+                <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   mr-7 mb-8`}
+                
+                >
                     <View style={tw``} >
                         <Icon
                             name='rupee'
