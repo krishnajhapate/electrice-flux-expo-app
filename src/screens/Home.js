@@ -24,7 +24,7 @@ export default function Home({navigation}) {
                 </TouchableOpacity>
 
                 <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   ml-2 mb-8`}
-                    onPress={()=>navigation.navigate("ProductScreen")}
+                    onPress={()=>navigation.navigate("Products")}
                     >
                     <View style={tw``} >
                         <Icon
