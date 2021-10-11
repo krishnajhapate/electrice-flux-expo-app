@@ -12,6 +12,7 @@ export default function Login({ navigation }) {
         email: "",
         password: "",
     });
+    const [showPassword, setShowPassword] = useState(false);
     const dispatch = useDispatch();
     const { isPending, hasErrors } = useSelector((state) => state.loginReducer);
 
@@ -54,13 +55,18 @@ export default function Login({ navigation }) {
                 <View style={tw` mb-7 `}>
                     <TextInput
                         label="Password"
-                        secureTextEntry={true}
+                        secureTextEntry={!showPassword}
                         value={credentials.password}
                         style={tw`text-base  shadow-2xl bg-transparent`}
                         onChangeText={(value) =>
                             setCredentials({ ...credentials, password: value })
                         }
-                        right={<TextInput.Icon name="eye" />}
+                        right={
+                            <TextInput.Icon
+                                name="eye"
+                                onPress={() => setShowPassword(!showPassword)}
+                            />
+                        }
                     />
                 </View>
 
