@@ -1,9 +1,8 @@
 import React, { useEffect } from "react";
 import { View, Text, Alert } from "react-native";
-import { TextInput } from "react-native-paper";
+import { TextInput, Button } from "react-native-paper";
 import tw from "tailwind-react-native-classnames";
 import { useState } from "react";
-// import { Button } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import { loginWithEmailPassword } from "../reducers/authReducer";
 
@@ -17,7 +16,7 @@ export default function Login({ navigation }) {
     const { isPending, hasErrors } = useSelector((state) => state.loginReducer);
 
     const handleLogin = () => {
-        dispatch(loginWithEmailPassword(credentials));
+        // dispatch(loginWithEmailPassword(credentials));
     };
 
     useEffect(() => {
@@ -77,12 +76,15 @@ export default function Login({ navigation }) {
                     Forget?
                 </Text>
 
-                {/* <Button
+                <Button
                     title="Login"
                     onPress={() => handleLogin()}
                     loading={isPending}
-                    buttonStyle={tw`my-2 py-3 rounded-xl bg-blue-600`}
-                /> */}
+                    style={tw`my-2  rounded-xl bg-blue-600`}
+                    mode="contained"
+                >
+                    Login
+                </Button>
                 {/* <Button
                     title="Sign In "
                     // onPress={() => navigation.navigate('SignupScreen')}
