@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import Home from "./Home";
-import Settings from "./Settings";
-import Invoice from "./Invoice";
-import Products from "./Products";
-import Services from "./Services";
+// import Home from "./Home";
+// import Settings from "./Settings";
+// import Invoice from "./Invoice";
+// import Products from "./Products";
+// import Services from "./Services";
 import Login from "./Login";
-import Signup from "./Signup";
-import { Icon } from "react-native-elements";
+// import Signup from "./Signup";
+// import { Icon } from "react-native-elements";
 import Logout from "./Logout";
 import { useDispatch, useSelector } from "react-redux";
 import Firebase from "../services/firebase";
@@ -65,110 +65,110 @@ export default function Screens() {
                         headerShown: false,
                     }}
                 />
-                <Stack.Screen
+                {/* <Stack.Screen
                     name="SignupScreen"
                     component={Signup}
                     options={{
                         headerShown: false,
                     }}
-                />
+                /> */}
             </Stack.Navigator>
         </>
     );
 }
 
-function MainScreen() {
-    return (
-        <Tab.Navigator
-            screenOptions={{
-                tabBarStyle: [
-                    tw`rounded-xl h-16`,
-                    { backgroundColor: "#9AC4F8" },
-                ],
-            }}
-            initialRouteName="Home"
-            activeColor="black"
-            options={{
-                tabBarInactiveTintColor: "white",
-                tabBarActiveTintColor: "white",
-            }}
-        >
-            <Tab.Screen
-                name="HomeScreen"
-                component={Home}
-                options={{
-                    headerShown: false,
-                    tabBarShowLabel: false,
-                    tabBarInactiveTintColor: "#3d85c6",
-                    tabBarActiveTintColor: "white",
-                    tabBarIcon: ({ color }) => (
-                        <Icon
-                            name="home"
-                            type="font-awesome-5"
-                            size={26}
-                            color={color}
-                        />
-                    ),
-                }}
-            />
-            <Tab.Screen
-                name="InvoiceScreen"
-                options={{
-                    headerShown: false,
-                    tabBarShowLabel: false,
-                    tabBarInactiveTintColor: "#3d85c6",
-                    tabBarActiveTintColor: "white",
-                    tabBarIcon: ({ color }) => (
-                        <Icon
-                            name="file-invoice"
-                            type="font-awesome-5"
-                            size={26}
-                            color={color}
-                        />
-                    ),
-                }}
-                component={Invoice}
-            />
-            <Tab.Screen
-                name="Products"
-                options={{
-                    headerShown: false,
-                    tabBarShowLabel: false,
-                    tabBarInactiveTintColor: "#3d85c6",
-                    tabBarActiveTintColor: "white",
-                    tabBarIcon: ({ color }) => {
-                        return (
-                            <Icon
-                                name="category"
-                                type="material"
-                                size={26}
-                                color={color}
-                            />
-                        );
-                    },
-                }}
-                component={Products}
-            />
-            <Tab.Screen
-                name="Services"
-                options={{
-                    headerShown: false,
-                    tabBarShowLabel: false,
-                    tabBarInactiveTintColor: "#3d85c6",
-                    tabBarActiveTintColor: "white",
-                    tabBarIcon: ({ color }) => {
-                        return (
-                            <Icon
-                                name="servicestack"
-                                type="font-awesome-5"
-                                size={26}
-                                color={color}
-                            />
-                        );
-                    },
-                }}
-                component={Services}
-            />
-        </Tab.Navigator>
-    );
-}
+// function MainScreen() {
+//     return (
+//         <Tab.Navigator
+//             screenOptions={{
+//                 tabBarStyle: [
+//                     tw`rounded-xl h-16`,
+//                     { backgroundColor: "#9AC4F8" },
+//                 ],
+//             }}
+//             initialRouteName="Home"
+//             activeColor="black"
+//             options={{
+//                 tabBarInactiveTintColor: "white",
+//                 tabBarActiveTintColor: "white",
+//             }}
+//         >
+//             <Tab.Screen
+//                 name="HomeScreen"
+//                 component={Home}
+//                 options={{
+//                     headerShown: false,
+//                     tabBarShowLabel: false,
+//                     tabBarInactiveTintColor: "#3d85c6",
+//                     tabBarActiveTintColor: "white",
+//                     tabBarIcon: ({ color }) => (
+//                         <Icon
+//                             name="home"
+//                             type="font-awesome-5"
+//                             size={26}
+//                             color={color}
+//                         />
+//                     ),
+//                 }}
+//             />
+//             <Tab.Screen
+//                 name="InvoiceScreen"
+//                 options={{
+//                     headerShown: false,
+//                     tabBarShowLabel: false,
+//                     tabBarInactiveTintColor: "#3d85c6",
+//                     tabBarActiveTintColor: "white",
+//                     tabBarIcon: ({ color }) => (
+//                         <Icon
+//                             name="file-invoice"
+//                             type="font-awesome-5"
+//                             size={26}
+//                             color={color}
+//                         />
+//                     ),
+//                 }}
+//                 component={Invoice}
+//             />
+//             <Tab.Screen
+//                 name="Products"
+//                 options={{
+//                     headerShown: false,
+//                     tabBarShowLabel: false,
+//                     tabBarInactiveTintColor: "#3d85c6",
+//                     tabBarActiveTintColor: "white",
+//                     tabBarIcon: ({ color }) => {
+//                         return (
+//                             <Icon
+//                                 name="category"
+//                                 type="material"
+//                                 size={26}
+//                                 color={color}
+//                             />
+//                         );
+//                     },
+//                 }}
+//                 component={Products}
+//             />
+//             <Tab.Screen
+//                 name="Services"
+//                 options={{
+//                     headerShown: false,
+//                     tabBarShowLabel: false,
+//                     tabBarInactiveTintColor: "#3d85c6",
+//                     tabBarActiveTintColor: "white",
+//                     tabBarIcon: ({ color }) => {
+//                         return (
+//                             <Icon
+//                                 name="servicestack"
+//                                 type="font-awesome-5"
+//                                 size={26}
+//                                 color={color}
+//                             />
+//                         );
+//                     },
+//                 }}
+//                 component={Services}
+//             />
+//         </Tab.Navigator>
+//     );
+// }
