@@ -35,51 +35,38 @@ export default function Login({ navigation }) {
         <View style={tw`h-full bg-blue-50`}>
             <View style={tw`h-2/4 w-5/6 mx-auto  top-1/4 px-3   `}>
                 <Text
-                    style={tw` text-black text-4xl py-3 text-blue-900 font-bold  `}
+                    style={tw` text-black text text-4xl py-3 text-blue-900 font-bold  `}
                 >
                     Login
                 </Text>
 
-                <View style={tw`my-2 mt-5`}>
+                <View style={tw`my-5 mt-5`}>
                     <TextInput
-                        placeholder="Email ID"
-                        leftIcon={{
-                            type: "font-awesome-5",
-                            name: "at",
-                            color: "gray",
-                            marginRight: 7,
-                            size: 20,
-                        }}
+                        label="Email"
                         value={credentials.email}
-                        style={tw`text-base  border-0 `}
+                        style={tw`text-base  border-0 shadow-2xl bg-transparent `}
                         onChangeText={(value) =>
                             setCredentials({ ...credentials, email: value })
                         }
                     />
                 </View>
 
-                <View style={tw` mb-7`}>
+                <View style={tw` mb-7 `}>
                     <TextInput
-                        placeholder="Password"
-                        leftIcon={{
-                            type: "font-awesome-5",
-                            name: "lock",
-                            color: "gray",
-                            marginRight: 7,
-                            size: 20,
-                        }}
+                        label="Password"
                         secureTextEntry={true}
                         value={credentials.password}
-                        style={tw`text-base `}
+                        style={tw`text-base  shadow-2xl bg-transparent`}
                         onChangeText={(value) =>
                             setCredentials({ ...credentials, password: value })
                         }
+                        right={<TextInput.Icon name="eye" />}
                     />
                 </View>
 
                 <Text
                     onPress={() => console.log("Forget password")}
-                    style={tw`absolute top-44 right-4 text-blue-600`}
+                    style={tw` text-blue-600`}
                 >
                     Forget?
                 </Text>
