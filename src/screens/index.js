@@ -5,7 +5,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Home from "./Home";
 // import Settings from "./Settings";
 // import Invoice from "./Invoice";
-// import Products from "./Products";
+import Products from "./Products";
 // import Services from "./Services";
 import Login from "./Login";
 import Signup from "./Signup";
@@ -73,6 +73,7 @@ export default function Screens() {
                     }}
                 />
                 <Stack.Screen name="HomeScreen" component={Home} />
+                <Stack.Screen name="ProductScreen" component={Products} />
             </Stack.Navigator>
         </>
     );

@@ -49,7 +49,7 @@ export default function Home({ navigation }) {
 
                 <TouchableOpacity
                     style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   ml-2 mb-8`}
-                    onPress={() => navigation.navigate("Products")}
+                    onPress={() => navigation.navigate("ProductScreen")}
                 >
                     <View style={tw``}>
                         <Icon
