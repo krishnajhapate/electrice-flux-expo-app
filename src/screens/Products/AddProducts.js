@@ -1,19 +1,24 @@
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { View, Text } from "react-native";
 import { Icon } from "react-native-elements";
-import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-import { FAB, IconButton, List, Portal } from "react-native-paper";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { Button, TextInput } from "react-native-paper";
 import tw from "tailwind-react-native-classnames";
 
 export default function AddProduct({ navigation }) {
     const [state, setState] = React.useState({ open: false });
-
+    const [data, setData] = useState({
+        name: "",
+        price: "",
+        mrp: "",
+        description: "",
+    });
     const onStateChange = ({ open }) => setState({ open });
 
     const { open } = state;
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: "Products",
+            title: "Add Product",
             headerStyle: {
                 backgroundColor: "darkgreen",
             },
@@ -50,27 +55,44 @@ export default function AddProduct({ navigation }) {
     );
     return (
         <View style={tw`h-full bg-blue-50`}>
-            <View style={tw`h-full flex-1`}>
-                <FlatList
-                    data={tempData}
-                    renderItem={renderItem}
-                    keyExtractor={(item) => item.id}
+            <View style={tw`h-full flex-1 p-4`}>
+                <TextInput
+                    label="Product Name"
+                    value={data.value}
+                    style={tw`bg-white shadow-2xl mb-3`}
+                    onChangeText={(text) => setData({ ...data, name: text })}
+                />
+                <TextInput
+                    label="Price"
+                    value={data.value}
+                    style={tw`bg-white shadow-2xl mb-3`}
+                    onChangeText={(text) => setData({ ...data, price: text })}
+                />
+                <TextInput
+                    label="Mrp"
+                    value={data.value}
+                    style={tw`bg-white shadow-2xl mb-3`}
+                    onChangeText={(text) => setData({ ...data, mrp: text })}
+                />
+                <TextInput
+                    label="Description"
+                    value={data.value}
+                    style={tw`bg-white shadow-2xl mb-3`}
+                    onChangeText={(text) =>
+                        setData({ ...data, description: text })
+                    }
                 />
 
-                <FAB
-                    small
-                    style={[
-                        tw`bottom-0 absolute m-12 p-3 rounded-full right-0 `,
-                        { backgroundColor: "darkgreen" },
-                    ]}
-                    size={50}
-                    icon="plus"
-                    color="white"
-                    onPress={() => console.log("Pressed")}
-                />
+                <Button
+                    onPress={() => handleLogin()}
+                    // loading={isPending}
+                    contentStyle={tw` py-2  rounded-xl `}
+                    style={tw`rounded-xl `}
+                    mode="contained"
+                >
+                    Add
+                </Button>
             </View>
         </View>
     );
 }
-
-
