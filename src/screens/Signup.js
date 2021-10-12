@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, Alert } from "react-native";
-import { Input } from "react-native-elements";
+import { Icon, Input } from "react-native-elements";
 import { useDispatch, useSelector } from "react-redux";
 import tw from "tailwind-react-native-classnames";
 import { registerWithEmailPassword } from "../reducers/authReducer";
@@ -55,13 +55,19 @@ export default function Signup({ navigation }) {
                 <View style={tw`my-2 mt-5`}>
                     <TextInput
                         label="Email ID"
-                        leftIcon={{
-                            type: "font-awesome-5",
-                            name: "at",
-                            color: "gray",
-                            marginRight: 7,
-                            size: 20,
-                        }}
+                        left={
+                            <TextInput.Icon
+                                name={() => (
+                                    <Icon
+                                        name="envelope"
+                                        type="font-awesome-5"
+                                        size={20}
+                                        color="gray"
+                                    />
+                                )}
+                                onPress={() => setShowPassword(!showPassword)}
+                            />
+                        }
                         style={tw`text-base  border-0 shadow-2xl bg-blue-50 `}
                         value={details.email}
                         onChangeText={(value) =>
@@ -73,13 +79,19 @@ export default function Signup({ navigation }) {
                 <View style={tw` my-1`}>
                     <TextInput
                         label="Full Name"
-                        leftIcon={{
-                            type: "font-awesome-5",
-                            name: "fire",
-                            color: "gray",
-                            marginRight: 7,
-                            size: 20,
-                        }}
+                        left={
+                            <TextInput.Icon
+                                name={() => (
+                                    <Icon
+                                        name="user"
+                                        type="simple-line-icon"
+                                        size={20}
+                                        color="gray"
+                                    />
+                                )}
+                                onPress={() => setShowPassword(!showPassword)}
+                            />
+                        }
                         value={details.name}
                         style={tw`text-base  border-0 shadow-2xl bg-blue-50 `}
                         onChangeText={(value) =>
@@ -93,7 +105,27 @@ export default function Signup({ navigation }) {
                         secureTextEntry={!showPassword}
                         left={
                             <TextInput.Icon
-                                name="eye"
+                                name={() => (
+                                    <Icon
+                                        name="lock-outline"
+                                        type="material"
+                                        size={20}
+                                        color="gray"
+                                    />
+                                )}
+                                onPress={() => setShowPassword(!showPassword)}
+                            />
+                        }
+                        right={
+                            <TextInput.Icon
+                                name={() => (
+                                    <Icon
+                                        name="eye"
+                                        type="simple-line-icon"
+                                        size={20}
+                                        color="gray"
+                                    />
+                                )}
                                 onPress={() => setShowPassword(!showPassword)}
                             />
                         }
