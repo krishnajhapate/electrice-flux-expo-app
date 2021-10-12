@@ -23,7 +23,7 @@ const Tab = createBottomTabNavigator();
 const DrawerHeaderStyle = {
     drawerLableShow: false,
     headerStyle: {
-        backgroundColor: "#9AC4F8",
+        backgroundColor: "#7B61F8",
     },
     headerTintColor: "white",
 };
@@ -77,6 +77,22 @@ export default function Screens() {
         </>
     );
 }
+
+const Header = () => {
+    const _goBack = () => console.log("Went back");
+
+    const _handleSearch = () => console.log("Searching");
+
+    const _handleMore = () => console.log("Shown more");
+    return (
+        <Appbar.Header>
+            <Appbar.BackAction onPress={_goBack} />
+            <Appbar.Content title="Title" subtitle="Subtitle" />
+            <Appbar.Action icon="magnify" onPress={_handleSearch} />
+            <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
+        </Appbar.Header>
+    );
+};
 
 // function MainScreen() {
 //     return (

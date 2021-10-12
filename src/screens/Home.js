@@ -1,130 +1,180 @@
-import React from 'react'
-import { View, Text, TouchableOpacity } from 'react-native'
-import tw from 'tailwind-react-native-classnames'
-import { Icon } from 'react-native-elements'
+import React, { useLayoutEffect } from "react";
+import { View, Text, TouchableOpacity } from "react-native";
+import tw from "tailwind-react-native-classnames";
+import { Icon } from "react-native-elements";
+import { Appbar } from "react-native-paper";
 
-export default function Home({navigation}) {
+export default function Home({ navigation }) {
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            title: "Dashboard",
+            headerStyle: {
+                backgroundColor: "darkgreen",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+                fontWeight: "bold",
+            },
+            headerRight: () => (
+                <TouchableOpacity
+                    onPress={() => alert("Hello Raju")}
+                    style={{ marginRight: 10 }}
+                >
+                    <Icon name="user-alt" type="font-awesome-5" color="white" />
+                </TouchableOpacity>
+            ),
+        });
+    }, [navigation]);
     return (
-        <View style={tw`h-full bg-blue-50 pt-6  `} >
-
+        <View style={tw`h-full bg-blue-50 pt-6  `}>
             <View style={tw` h-full mx-auto ml-4 flex-row flex-wrap`}>
-
-                <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   mr-7 mb-8`}
-                    onPress={()=>navigation.navigate("InvoiceScreen")}
+                <TouchableOpacity
+                    style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   mr-7 mb-8`}
+                    onPress={() => navigation.navigate("InvoiceScreen")}
                 >
-                    <View style={tw``} >
+                    <View style={tw``}>
                         <Icon
-                            name='money-bill-alt'
+                            name="money-bill-alt"
                             type="font-awesome-5"
-                            color='#009a00'
+                            color="#009a00"
                             size={60}
                         />
-                        <Text style={tw`text-center mt-4 text-base text-gray-600 `} >Create Bill</Text>
+                        <Text
+                            style={tw`text-center mt-4 text-base text-gray-600 `}
+                        >
+                            Create Bill
+                        </Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   ml-2 mb-8`}
-                    onPress={()=>navigation.navigate("Products")}
-                    >
-                    <View style={tw``} >
+                <TouchableOpacity
+                    style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   ml-2 mb-8`}
+                    onPress={() => navigation.navigate("Products")}
+                >
+                    <View style={tw``}>
                         <Icon
-                            name='cart'
+                            name="cart"
                             type="zocial"
-                            color='blue'
+                            color="blue"
                             size={60}
                         />
-                        <Text style={tw`text-center mt-4 text-base text-gray-600 `} >Products</Text>
+                        <Text
+                            style={tw`text-center mt-4 text-base text-gray-600 `}
+                        >
+                            Products
+                        </Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   mr-7 mb-8`}
-                    onPress={()=>navigation.navigate("Services")}
-                
+                <TouchableOpacity
+                    style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   mr-7 mb-8`}
+                    onPress={() => navigation.navigate("Services")}
                 >
-                    <View style={tw``} >
+                    <View style={tw``}>
                         <Icon
-                            name='home-repair-service'
+                            name="home-repair-service"
                             type="material"
-                            color='#674ea7'
+                            color="#674ea7"
                             size={60}
                         />
-                        <Text style={tw`text-center mt-4 text-base text-gray-600 `} >Services</Text>
+                        <Text
+                            style={tw`text-center mt-4 text-base text-gray-600 `}
+                        >
+                            Services
+                        </Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   ml-2 mb-8`}
-                    onPress={()=>navigation.navigate("InvoiceScreen")}
-                    >
-                    <View style={tw``} >
+                <TouchableOpacity
+                    style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   ml-2 mb-8`}
+                    onPress={() => navigation.navigate("InvoiceScreen")}
+                >
+                    <View style={tw``}>
                         <Icon
-                            name='file-invoice-dollar'
+                            name="file-invoice-dollar"
                             type="font-awesome-5"
-                            color='#0f4b55'
+                            color="#0f4b55"
                             size={60}
                         />
-                        <Text style={tw`text-center mt-4 text-base text-gray-600 `} >Invoice</Text>
+                        <Text
+                            style={tw`text-center mt-4 text-base text-gray-600 `}
+                        >
+                            Invoice
+                        </Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   mr-7 mb-8`}
-                
+                <TouchableOpacity
+                    style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   mr-7 mb-8`}
                 >
-                    <View style={tw``} >
+                    <View style={tw``}>
                         <Icon
-                            name='money'
+                            name="money"
                             type="material"
-                            color='darkorange'
+                            color="darkorange"
                             size={60}
                         />
-                        <Text style={tw`text-center mt-4 text-base text-gray-600 `} >Today: 3000₹</Text>
+                        <Text
+                            style={tw`text-center mt-4 text-base text-gray-600 `}
+                        >
+                            Today: ₹ 3000
+                        </Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   ml-2 mb-8`}>
-                    <View style={tw``} >
+                <TouchableOpacity
+                    style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   ml-2 mb-8`}
+                >
+                    <View style={tw``}>
                         <Icon
-                            name='account-balance'
+                            name="account-balance"
                             type="material"
-                            color='#3d85c6'
+                            color="#3d85c6"
                             size={60}
                         />
-                        <Text style={tw`text-center mt-4 text-base text-gray-600 `} >Total: 54331₹</Text>
+                        <Text
+                            style={tw`text-center mt-4 text-base text-gray-600 `}
+                        >
+                            Total: ₹ 54331
+                        </Text>
                     </View>
                 </TouchableOpacity>
 
-                <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   mr-7 mb-8`}
-                    onPress={()=>navigation.navigate("Settings")}
-                
+                <TouchableOpacity
+                    style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   mr-7 mb-8`}
+                    onPress={() => navigation.navigate("Settings")}
                 >
-                    <View style={tw``} >
+                    <View style={tw``}>
                         <Icon
-                            name='settings'
+                            name="settings"
                             type="material"
-                            color='black'
+                            color="black"
                             size={60}
                         />
-                        <Text style={tw`text-center mt-4 text-base text-gray-600 `} >Settings</Text>
+                        <Text
+                            style={tw`text-center mt-4 text-base text-gray-600 `}
+                        >
+                            Settings
+                        </Text>
                     </View>
                 </TouchableOpacity>
-                <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   ml-2 mb-8`}
+                <TouchableOpacity
+                    style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   ml-2 mb-8`}
                     // onPress={()=>navigation.navigate("Logout")}
-                
                 >
-                    <View style={tw``} >
+                    <View style={tw``}>
                         <Icon
-                            name='logout'
+                            name="logout"
                             type="ant-design"
-                            color='#55272d'
+                            color="#55272d"
                             size={60}
                         />
-                        <Text style={tw`text-center mt-4 text-base text-gray-600 `} >Logout</Text>
+                        <Text
+                            style={tw`text-center mt-4 text-base text-gray-600 `}
+                        >
+                            Logout
+                        </Text>
                     </View>
                 </TouchableOpacity>
-
-               
-
-
-
             </View>
-
         </View>
-    )
+    );
 }
