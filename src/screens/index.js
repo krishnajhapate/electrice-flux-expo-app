@@ -5,7 +5,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 import Home from "./Home";
 // import Settings from "./Settings";
 // import Invoice from "./Invoice";
-import Products from "./Products";
+import Products from "./Products/Products";
 // import Services from "./Services";
 import Login from "./Login";
 import Signup from "./Signup";
@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Firebase from "../services/firebase";
 import { resetLogin, userLoggedin } from "../reducers/authReducer";
 import tw from "tailwind-react-native-classnames";
+import AddProduct from "./Products/AddProducts";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -74,6 +75,7 @@ export default function Screens() {
                 />
                 <Stack.Screen name="HomeScreen" component={Home} />
                 <Stack.Screen name="ProductScreen" component={Products} />
+                <Stack.Screen name="AddProductScreen" component={AddProduct} />
             </Stack.Navigator>
         </>
     );
