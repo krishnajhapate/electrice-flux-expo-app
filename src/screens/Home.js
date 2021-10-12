@@ -14,8 +14,8 @@ export default function Home({navigation}) {
                 >
                     <View style={tw``} >
                         <Icon
-                            name='credit-card'
-                            type="material"
+                            name='money-bill-alt'
+                            type="font-awesome-5"
                             color='#009a00'
                             size={60}
                         />
@@ -28,8 +28,8 @@ export default function Home({navigation}) {
                     >
                     <View style={tw``} >
                         <Icon
-                            name='category'
-                            type="material"
+                            name='cart'
+                            type="zocial"
                             color='blue'
                             size={60}
                         />
@@ -43,8 +43,8 @@ export default function Home({navigation}) {
                 >
                     <View style={tw``} >
                         <Icon
-                            name='servicestack'
-                            type="font-awesome-5"
+                            name='home-repair-service'
+                            type="material"
                             color='#674ea7'
                             size={60}
                         />
@@ -56,7 +56,7 @@ export default function Home({navigation}) {
                     >
                     <View style={tw``} >
                         <Icon
-                            name='receipt'
+                            name='file-invoice-dollar'
                             type="font-awesome-5"
                             color='#0f4b55'
                             size={60}
@@ -70,9 +70,9 @@ export default function Home({navigation}) {
                 >
                     <View style={tw``} >
                         <Icon
-                            name='rupee'
-                            type="font-awesome"
-                            color='#ffd966'
+                            name='money'
+                            type="material"
+                            color='darkorange'
                             size={60}
                         />
                         <Text style={tw`text-center mt-4 text-base text-gray-600 `} >Today: 3000₹</Text>
@@ -105,14 +105,14 @@ export default function Home({navigation}) {
                     </View>
                 </TouchableOpacity>
                 <TouchableOpacity style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   ml-2 mb-8`}
-                    onPress={()=>navigation.navigate("Logout")}
+                    // onPress={()=>navigation.navigate("Logout")}
                 
                 >
                     <View style={tw``} >
                         <Icon
-                            name='door-open'
-                            type="font-awesome-5"
-                            color='gray'
+                            name='logout'
+                            type="ant-design"
+                            color='#55272d'
                             size={60}
                         />
                         <Text style={tw`text-center mt-4 text-base text-gray-600 `} >Logout</Text>
