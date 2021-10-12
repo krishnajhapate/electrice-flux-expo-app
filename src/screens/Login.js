@@ -5,6 +5,7 @@ import tw from "tailwind-react-native-classnames";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { loginWithEmailPassword } from "../reducers/authReducer";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 export default function Login({ navigation }) {
     const [credentials, setCredentials] = useState({
@@ -35,7 +36,7 @@ export default function Login({ navigation }) {
         <View style={tw`h-full bg-blue-50`}>
             <View style={tw`h-2/4 w-5/6 mx-auto  top-1/4 px-3   `}>
                 <Text
-                    style={tw` text-black text text-4xl py-3 text-blue-900 font-bold  `}
+                    style={tw` text-black  text-4xl py-3 text-blue-900 font-bold  `}
                 >
                     Login
                 </Text>
@@ -44,7 +45,7 @@ export default function Login({ navigation }) {
                     <TextInput
                         label="Email"
                         value={credentials.email}
-                        style={tw`text-base  border-0 shadow-2xl bg-transparent `}
+                        style={tw`text-base  border-0 shadow-2xl bg-blue-50 `}
                         onChangeText={(value) =>
                             setCredentials({ ...credentials, email: value })
                         }
@@ -56,7 +57,7 @@ export default function Login({ navigation }) {
                         label="Password"
                         secureTextEntry={!showPassword}
                         value={credentials.password}
-                        style={tw`text-base  shadow-2xl bg-transparent`}
+                        style={tw`text-base  shadow-2xl bg-blue-50`}
                         onChangeText={(value) =>
                             setCredentials({ ...credentials, password: value })
                         }
@@ -71,33 +72,21 @@ export default function Login({ navigation }) {
 
                 <Text
                     onPress={() => console.log("Forget password")}
-                    style={tw` text-blue-600`}
+                    style={tw`mb-4 text-blue-600`}
                 >
-                    Forget?
+                    Forget Password?
                 </Text>
 
                 <Button
                     title="Login"
                     onPress={() => handleLogin()}
                     loading={isPending}
-                    style={tw`my-2  rounded-xl bg-blue-600`}
+                    contentStyle={tw` py-2  rounded-xl bg-blue-800`}
                     mode="contained"
+                    accessibilityLabel="LOLOLOL"
                 >
                     Login
                 </Button>
-                {/* <Button
-                    title="Sign In "
-                    // onPress={() => navigation.navigate('SignupScreen')}
-                    buttonStyle={tw`my-2  `}
-                    icon={
-                        <Icon
-                            name="google"
-                            size={15}
-                            color="white"
-                        />}
-                    iconRight={true}
-                    onPress={() => handleLogin()}
-                /> */}
                 <Text style={tw`text-center text-gray-500 mt-4`}>
                     New to Elctroflux?
                     <Text
