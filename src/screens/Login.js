@@ -77,7 +77,6 @@ export default function Login({ navigation }) {
                 </TouchableOpacity>
 
                 <Button
-                    title="Login"
                     onPress={() => handleLogin()}
                     loading={isPending}
                     contentStyle={tw` py-2  rounded-xl bg-blue-800`}
