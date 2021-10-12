@@ -70,32 +70,29 @@ export default function Login({ navigation }) {
                     />
                 </View>
 
-                <Text
+                <TouchableOpacity
                     onPress={() => console.log("Forget password")}
-                    style={tw`mb-4 text-blue-600`}
                 >
-                    Forget Password?
-                </Text>
+                    <Text style={tw`mb-4 text-blue-600`}>Forget Password?</Text>
+                </TouchableOpacity>
 
                 <Button
                     title="Login"
                     onPress={() => handleLogin()}
                     loading={isPending}
                     contentStyle={tw` py-2  rounded-xl bg-blue-800`}
+                    style={tw`  rounded-xl bg-blue-800`}
                     mode="contained"
-                    accessibilityLabel="LOLOLOL"
                 >
                     Login
                 </Button>
                 <Text style={tw`text-center text-gray-500 mt-4`}>
                     New to Elctroflux?
-                    <Text
+                    <TouchableOpacity
                         onPress={() => navigation.navigate("SignupScreen")}
-                        style={tw`text-blue-500`}
                     >
-                        {" "}
-                        Register
-                    </Text>
+                        <Text style={tw`text-blue-500`}> Register</Text>
+                    </TouchableOpacity>
                 </Text>
             </View>
         </View>
