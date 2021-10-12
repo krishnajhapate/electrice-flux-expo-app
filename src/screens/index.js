@@ -8,7 +8,7 @@ import { createDrawerNavigator } from "@react-navigation/drawer";
 // import Products from "./Products";
 // import Services from "./Services";
 import Login from "./Login";
-// import Signup from "./Signup";
+import Signup from "./Signup";
 // import { Icon } from "react-native-elements";
 import Logout from "./Logout";
 import { useDispatch, useSelector } from "react-redux";
@@ -33,17 +33,17 @@ export default function Screens() {
     // const [isLogin] = useState(true)
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        Firebase.auth().onAuthStateChanged((user) => {
-            console.log(user);
-            if (user) return dispatch(userLoggedin(user));
-            return dispatch(resetLogin());
-        });
-    }, [dispatch]);
+    // useEffect(() => {
+    //     Firebase.auth().onAuthStateChanged((user) => {
+    //         console.log(user);
+    //         if (user) return dispatch(userLoggedin(user));
+    //         return dispatch(resetLogin());
+    //     });
+    // }, [dispatch]);
 
-    useEffect(() => {
-        console.log(isLogin);
-    }, [isLogin]);
+    // useEffect(() => {
+    //     console.log(isLogin);
+    // }, [isLogin]);
 
     return (
         <>
@@ -65,13 +65,13 @@ export default function Screens() {
                         headerShown: false,
                     }}
                 />
-                {/* <Stack.Screen
+                <Stack.Screen
                     name="SignupScreen"
                     component={Signup}
                     options={{
                         headerShown: false,
                     }}
-                /> */}
+                />
             </Stack.Navigator>
         </>
     );
