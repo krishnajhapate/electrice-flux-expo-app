@@ -17,6 +17,7 @@ export default function Login({ navigation }) {
     const { isPending, hasErrors } = useSelector((state) => state.loginReducer);
 
     const handleLogin = () => {
+        navigation.navigate("HomeScreen");
         // dispatch(loginWithEmailPassword(credentials));
     };
 

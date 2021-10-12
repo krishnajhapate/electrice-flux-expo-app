@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-// import Home from "./Home";
+import Home from "./Home";
 // import Settings from "./Settings";
 // import Invoice from "./Invoice";
 // import Products from "./Products";
@@ -72,6 +72,7 @@ export default function Screens() {
                         headerShown: false,
                     }}
                 />
+                <Stack.Screen name="HomeScreen" component={Home} />
             </Stack.Navigator>
         </>
     );
