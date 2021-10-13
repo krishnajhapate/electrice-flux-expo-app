@@ -60,7 +60,7 @@ export default function ServiceAction({ route, navigation }) {
                     onChangeText={(text) => setData({ ...data, price: text })}
                     keyboardType="number-pad"
                 />
-               
+
                 <TextInput
                     label="Description"
                     value={data.description}
@@ -72,9 +72,13 @@ export default function ServiceAction({ route, navigation }) {
                 />
 
                 {data.update ? (
-                    <View style={tw`flex flex-row w-full mx-auto justify-around mt-5`} >
+                    <View
+                        style={tw`flex flex-row w-full mx-auto justify-around mt-5`}
+                    >
                         <Button
-                            onPress={() => navigation.navigate('ServiceActionScreen')}
+                            onPress={() =>
+                                navigation.navigate("ServiceActionScreen")
+                            }
                             // loading={isPending}
                             contentStyle={tw` py-2 rounded-xl `}
                             style={tw`rounded-xl w-1/3 bg-red-700`}
@@ -83,8 +87,9 @@ export default function ServiceAction({ route, navigation }) {
                             Delete
                         </Button>
                         <Button
-                            onPress={() => navigation.navigate('ServiceActionScreen')}
-
+                            onPress={() =>
+                                navigation.navigate("ServiceActionScreen")
+                            }
                             // loading={isPending}
                             contentStyle={tw` py-2 rounded-xl `}
                             style={tw`rounded-xl w-1/3`}
@@ -95,7 +100,10 @@ export default function ServiceAction({ route, navigation }) {
                     </View>
                 ) : (
                     <Button
-                        onPress={() => handleAdd()}
+                        onPress={() =>
+                            navigation.navigate("ServiceActionScreen")
+                        }
+                        // onPress={() => handleAdd()}
                         // loading={isPending}
                         contentStyle={tw` py-2  rounded-xl `}
                         style={tw`rounded-xl `}

@@ -101,7 +101,9 @@ export default function ProductAction({ route, navigation }) {
                     </View>
                 ) : (
                     <Button
-                        onPress={() => handleAdd()}
+                        // onPress={() => handleAdd()}
+                        onPress={() => navigation.navigate("ProductScreen")}
+
                         // loading={isPending}
                         contentStyle={tw` py-2  rounded-xl `}
                         style={tw`rounded-xl `}
