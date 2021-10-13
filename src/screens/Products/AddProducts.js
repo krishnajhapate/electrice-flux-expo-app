@@ -6,14 +6,14 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 import { Button, TextInput } from "react-native-paper";
 import tw from "tailwind-react-native-classnames";
 
-export default function AddProduct({ navigation }) {
+export default function AddProduct({ navigation, props }) {
     const [data, setData] = useState({
         name: "",
         price: "",
         mrp: "",
         description: "",
     });
-
+    console.log(props, navigation);
     const handleAdd = () => {
         return Alert(data.name);
     };

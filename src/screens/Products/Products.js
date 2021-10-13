@@ -32,7 +32,11 @@ export default function Products({ navigation }) {
         });
     }, [navigation]);
     const renderItem = ({ item }) => (
-        <TouchableOpacity>
+        <TouchableOpacity
+            onPress={() =>
+                navigation.navigate("AddProductScreen", { name: "item.name" })
+            }
+        >
             <List.Item
                 title={item.name}
                 description={item.description}
@@ -50,11 +54,12 @@ export default function Products({ navigation }) {
     );
     return (
         <View style={tw`h-full bg-blue-50`}>
+            
             <View style={tw`h-full flex-1`}>
                 <FlatList
                     data={tempData}
                     renderItem={renderItem}
-                    keyExtractor={(item) => item.id}
+                    keyExtractor={(item) => String(item.id)}
                 />
 
                 <FAB
