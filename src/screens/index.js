@@ -3,19 +3,16 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Home from "./Home";
-// import Settings from "./Settings";
-// import Invoice from "./Invoice";
 import Products from "./Products/Products";
-// import Services from "./Services";
 import Login from "./Login";
 import Signup from "./Signup";
-// import { Icon } from "react-native-elements";
-import Logout from "./Logout";
 import { useDispatch, useSelector } from "react-redux";
 import Firebase from "../services/firebase";
 import { resetLogin, userLoggedin } from "../reducers/authReducer";
 import tw from "tailwind-react-native-classnames";
 import AddProduct from "./Products/AddUpdateProducts";
+import Services from "./Services/Services";
+import ServiceAction from "./Services/AddUpdateService";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -57,7 +54,7 @@ export default function Screens() {
                     },
                     headerBackTitle: "Back",
                 }}
-                initialRouteName="ProductScreen"
+                initialRouteName="HomeScreen"
             >
                 <Stack.Screen
                     name="LoginScreen"
@@ -76,6 +73,11 @@ export default function Screens() {
                 <Stack.Screen name="HomeScreen" component={Home} />
                 <Stack.Screen name="ProductScreen" component={Products} />
                 <Stack.Screen name="AddProductScreen" component={AddProduct} />
+                <Stack.Screen name="ServicesScreen" component={Services} />
+                <Stack.Screen
+                    name="SericeActionScreen"
+                    component={ServiceAction}
+                />
             </Stack.Navigator>
         </>
     );

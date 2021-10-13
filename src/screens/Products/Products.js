@@ -22,7 +22,7 @@ export default function Products({ navigation }) {
             },
             headerRight: () => (
                 <TouchableOpacity
-                    onPress={() => alert("Hello Raju")}
+                    onPress={() => navigation.push("HomeScreen")}
                     style={{ marginRight: 10 }}
                 >
                     <Icon name="user-alt" type="font-awesome-5" color="white" />

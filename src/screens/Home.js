@@ -17,7 +17,7 @@ export default function Home({ navigation }) {
             },
             headerRight: () => (
                 <TouchableOpacity
-                    onPress={() => alert("Hello Raju")}
+                    onPress={() => navigation.push("HomeScreen")}
                     style={{ marginRight: 10 }}
                 >
                     <Icon name="user-alt" type="font-awesome-5" color="white" />
@@ -68,7 +68,7 @@ export default function Home({ navigation }) {
 
                 <TouchableOpacity
                     style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   mr-7 mb-8`}
-                    onPress={() => navigation.navigate("Services")}
+                    onPress={() => navigation.navigate("ServicesScreen")}
                 >
                     <View style={tw``}>
                         <Icon
