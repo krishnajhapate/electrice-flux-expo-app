@@ -6,13 +6,9 @@ import { FAB, List } from "react-native-paper";
 import tw from "tailwind-react-native-classnames";
 
 export default function Services({ navigation }) {
-    const [state, setState] = React.useState({ open: false });
-    const onStateChange = ({ open }) => setState({ open });
-
-    const { open } = state;
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: "Products",
+            title: "Services",
             headerStyle: {
                 backgroundColor: "darkgreen",
             },
@@ -37,13 +33,17 @@ export default function Services({ navigation }) {
             <List.Item
                 title={item.name}
                 description={item.description}
-                left={(props) => <List.Icon {...props} icon="folder" />}
+                left={(props) => (
+                    <List.Icon
+                        {...props}
+                        icon={() => <Icon name="home-repair-service" />}
+                    />
+                )}
                 right={() => (
                     <View>
                         <Text style={tw`font-bold text-lg text-right`}>
                             ₹{item.price}
                         </Text>
-                        <Text>Mrp: ₹{item.mrp}</Text>
                     </View>
                 )}
             />
@@ -67,7 +67,7 @@ export default function Services({ navigation }) {
                     size={50}
                     icon="plus"
                     color="white"
-                    onPress={() => navigation.navigate("AddProductScreen")}
+                    onPress={() => navigation.navigate("ServiceActionScreen")}
                 />
             </View>
         </View>
@@ -80,111 +80,95 @@ const tempData = [
         name: "PVC Pipe",
         description: "lol",
         price: 340,
-        mrp: 120,
     },
     {
         id: 2,
         name: "Tafflon",
         description: "lol",
         price: 50,
-        mrp: 10,
     },
     {
         id: 4,
         name: "40 mm",
         description: "lol",
         price: 340,
-        mrp: 120,
     },
     {
         id: 11,
         name: "6 mm",
         description: "lol",
         price: 340,
-        mrp: 120,
     },
     {
         id: 123,
         name: "18 mm",
         description: "lol",
         price: 340,
-        mrp: 120,
     },
     {
         id: 451,
         name: "6 mm A",
         description: "lol",
         price: 340,
-        mrp: 120,
     },
     {
         id: 15,
         name: "6 mm B",
         description: "lol",
         price: 340,
-        mrp: 120,
     },
     {
         id: 2341,
         name: "Jeera",
         description: "lol",
         price: 340,
-        mrp: 120,
     },
     {
         id: 11312,
         name: "PVC Pipe",
         description: "lol",
         price: 340,
-        mrp: 120,
     },
     {
         id: 124242,
         name: "Tafflon",
         description: "lol",
         price: 50,
-        mrp: 10,
     },
     {
         id: 4323423,
         name: "40 mm",
         description: "lol",
         price: 340,
-        mrp: 120,
     },
     {
         id: 112341,
         name: "6 mm",
         description: "lol",
         price: 340,
-        mrp: 120,
     },
     {
         id: 12123412343,
         name: "18 mm",
         description: "lol",
         price: 340,
-        mrp: 120,
     },
     {
         id: 4512341,
         name: "6 mm A",
         description: "lol",
         price: 340,
-        mrp: 120,
     },
     {
         id: 1345,
         name: "6 mm B",
         description: "lol",
         price: 340,
-        mrp: 120,
     },
     {
         id: 234341,
         name: "Jeera",
         description: "lol",
         price: 340,
-        mrp: 120,
     },
 ];

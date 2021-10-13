@@ -75,7 +75,7 @@ export default function Screens() {
                 <Stack.Screen name="AddProductScreen" component={AddProduct} />
                 <Stack.Screen name="ServicesScreen" component={Services} />
                 <Stack.Screen
-                    name="SericeActionScreen"
+                    name="ServiceActionScreen"
                     component={ServiceAction}
                 />
             </Stack.Navigator>
