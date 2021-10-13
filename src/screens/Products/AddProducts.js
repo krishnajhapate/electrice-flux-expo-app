@@ -77,21 +77,22 @@ export default function AddProduct({ route, navigation }) {
                 />
 
                 {data.update ? (
-                    <View style={tw`flex flex-row w-full`} >
+                    <View style={tw`flex flex-row w-full mx-auto justify-around mt-5`} >
                         <Button
-                            // onPress={() => handleAdd()}
+                            onPress={() => navigation.navigate('ProductScreen')}
                             // loading={isPending}
-                            contentStyle={tw` py-2   rounded-xl `}
-                            style={tw`rounded-xl w-1/2`}
+                            contentStyle={tw` py-2 rounded-xl `}
+                            style={tw`rounded-xl w-1/3 bg-red-700`}
                             mode="contained"
                         >
                             Delete
                         </Button>
                         <Button
-                            // onPress={() => handleAdd()}
+                            onPress={() => navigation.navigate('ProductScreen')}
+
                             // loading={isPending}
                             contentStyle={tw` py-2 rounded-xl `}
-                            style={tw`rounded-xl w-1/2`}
+                            style={tw`rounded-xl w-1/3`}
                             mode="contained"
                         >
                             Update
