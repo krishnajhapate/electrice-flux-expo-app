@@ -1,13 +1,12 @@
-import React, { useLayoutEffect } from "react";
+import React, { useLayoutEffect, useState } from "react";
 import { View, Text } from "react-native";
 import { Icon } from "react-native-elements";
 import { FlatList, TouchableOpacity } from "react-native-gesture-handler";
-import { FAB, IconButton, List, Portal } from "react-native-paper";
+import { FAB, List } from "react-native-paper";
 import tw from "tailwind-react-native-classnames";
 
 export default function Products({ navigation }) {
     const [state, setState] = React.useState({ open: false });
-
     const onStateChange = ({ open }) => setState({ open });
 
     const { open } = state;
@@ -33,9 +32,7 @@ export default function Products({ navigation }) {
     }, [navigation]);
     const renderItem = ({ item }) => (
         <TouchableOpacity
-            onPress={() =>
-                navigation.navigate("AddProductScreen", { name: "item.name" })
-            }
+            onPress={() => navigation.push("AddProductScreen", item)}
         >
             <List.Item
                 title={item.name}
@@ -54,7 +51,6 @@ export default function Products({ navigation }) {
     );
     return (
         <View style={tw`h-full bg-blue-50`}>
-            
             <View style={tw`h-full flex-1`}>
                 <FlatList
                     data={tempData}
