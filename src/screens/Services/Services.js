@@ -28,7 +28,7 @@ export default function Services({ navigation }) {
     }, [navigation]);
     const renderItem = ({ item }) => (
         <TouchableOpacity
-            onPress={() => navigation.push("AddProductScreen", item)}
+            onPress={() => navigation.push("ServiceActionScreen", item)}
         >
             <List.Item
                 title={item.name}

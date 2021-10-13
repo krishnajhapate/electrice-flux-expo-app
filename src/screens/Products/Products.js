@@ -32,7 +32,7 @@ export default function Products({ navigation }) {
     }, [navigation]);
     const renderItem = ({ item }) => (
         <TouchableOpacity
-            onPress={() => navigation.push("AddProductScreen", item)}
+            onPress={() => navigation.push("ProductActionScreen", item)}
         >
             <List.Item
                 title={item.name}
@@ -67,7 +67,7 @@ export default function Products({ navigation }) {
                     size={50}
                     icon="plus"
                     color="white"
-                    onPress={() => navigation.navigate("AddProductScreen")}
+                    onPress={() => navigation.navigate("ProductActionScreen")}
                 />
             </View>
         </View>

@@ -10,7 +10,6 @@ export default function ServiceAction({ route, navigation }) {
     const [data, setData] = useState({
         name: "",
         price: "",
-        mrp: "",
         description: "",
     });
 
@@ -20,7 +19,7 @@ export default function ServiceAction({ route, navigation }) {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: "Add Product",
+            title: "Add New Service",
             headerStyle: {
                 backgroundColor: "darkgreen",
             },
@@ -49,7 +48,7 @@ export default function ServiceAction({ route, navigation }) {
         <View style={tw`h-full bg-blue-50`}>
             <View style={tw`h-full flex-1 p-4`}>
                 <TextInput
-                    label="Product Name"
+                    label="Service Name"
                     value={data.name}
                     style={tw`bg-white shadow-2xl mb-3`}
                     onChangeText={(text) => setData({ ...data, name: text })}
@@ -61,16 +60,12 @@ export default function ServiceAction({ route, navigation }) {
                     onChangeText={(text) => setData({ ...data, price: text })}
                     keyboardType="number-pad"
                 />
-                <TextInput
-                    label="Mrp in ₹"
-                    value={String(data.mrp)}
-                    style={tw`bg-white shadow-2xl mb-3`}
-                    onChangeText={(text) => setData({ ...data, mrp: text })}
-                />
+               
                 <TextInput
                     label="Description"
                     value={data.description}
                     style={tw`bg-white shadow-2xl mb-3`}
+                    multiline={true}
                     onChangeText={(text) =>
                         setData({ ...data, description: text })
                     }
@@ -79,7 +74,7 @@ export default function ServiceAction({ route, navigation }) {
                 {data.update ? (
                     <View style={tw`flex flex-row w-full mx-auto justify-around mt-5`} >
                         <Button
-                            onPress={() => navigation.navigate('ProductScreen')}
+                            onPress={() => navigation.navigate('ServiceActionScreen')}
                             // loading={isPending}
                             contentStyle={tw` py-2 rounded-xl `}
                             style={tw`rounded-xl w-1/3 bg-red-700`}
@@ -88,7 +83,7 @@ export default function ServiceAction({ route, navigation }) {
                             Delete
                         </Button>
                         <Button
-                            onPress={() => navigation.navigate('ProductScreen')}
+                            onPress={() => navigation.navigate('ServiceActionScreen')}
 
                             // loading={isPending}
                             contentStyle={tw` py-2 rounded-xl `}

@@ -20,7 +20,7 @@ export default function ProductAction({ route, navigation }) {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            title: "Add Product",
+            title: route.params ? "Update" : "Add Product",
             headerStyle: {
                 backgroundColor: "darkgreen",
             },
@@ -77,9 +77,11 @@ export default function ProductAction({ route, navigation }) {
                 />
 
                 {data.update ? (
-                    <View style={tw`flex flex-row w-full mx-auto justify-around mt-5`} >
+                    <View
+                        style={tw`flex flex-row w-full mx-auto justify-around mt-5`}
+                    >
                         <Button
-                            onPress={() => navigation.navigate('ProductScreen')}
+                            onPress={() => navigation.navigate("ProductScreen")}
                             // loading={isPending}
                             contentStyle={tw` py-2 rounded-xl `}
                             style={tw`rounded-xl w-1/3 bg-red-700`}
@@ -88,8 +90,7 @@ export default function ProductAction({ route, navigation }) {
                             Delete
                         </Button>
                         <Button
-                            onPress={() => navigation.navigate('ProductScreen')}
-
+                            onPress={() => navigation.navigate("ProductScreen")}
                             // loading={isPending}
                             contentStyle={tw` py-2 rounded-xl `}
                             style={tw`rounded-xl w-1/3`}
