@@ -15,7 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Firebase from "../services/firebase";
 import { resetLogin, userLoggedin } from "../reducers/authReducer";
 import tw from "tailwind-react-native-classnames";
-import AddProduct from "./Products/AddProducts";
+import AddProduct from "./Products/AddUpdateProducts";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
