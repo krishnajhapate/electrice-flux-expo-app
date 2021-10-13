@@ -10,9 +10,9 @@ import { useDispatch, useSelector } from "react-redux";
 import Firebase from "../services/firebase";
 import { resetLogin, userLoggedin } from "../reducers/authReducer";
 import tw from "tailwind-react-native-classnames";
-import AddProduct from "./Products/AddUpdateProducts";
+import ProductAction from "./Products/ProductAction";
 import Services from "./Services/Services";
-import ServiceAction from "./Services/AddUpdateService";
+import ServiceAction from "./Services/ServiceAction";
 
 const Stack = createNativeStackNavigator();
 const Drawer = createDrawerNavigator();
@@ -72,7 +72,10 @@ export default function Screens() {
                 />
                 <Stack.Screen name="HomeScreen" component={Home} />
                 <Stack.Screen name="ProductScreen" component={Products} />
-                <Stack.Screen name="AddProductScreen" component={AddProduct} />
+                <Stack.Screen
+                    name="ProductActionScreen"
+                    component={ProductAction}
+                />
                 <Stack.Screen name="ServicesScreen" component={Services} />
                 <Stack.Screen
                     name="ServiceActionScreen"
