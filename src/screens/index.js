@@ -11,6 +11,7 @@ import tw from "tailwind-react-native-classnames";
 import ProductAction from "./Products/ProductAction";
 import Services from "./Services/Services";
 import ServiceAction from "./Services/ServiceAction";
+import Settings from "./Settings";
 
 const Stack = createNativeStackNavigator();
 
@@ -76,6 +77,10 @@ export default function Screens() {
                 <Stack.Screen
                     name="ServiceActionScreen"
                     component={ServiceAction}
+                />
+                <Stack.Screen
+                    name="SettingsScreen"
+                    component={Settings}
                 />
             </Stack.Navigator>
         </>
