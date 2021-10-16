@@ -33,14 +33,19 @@ export default function Products({ navigation }) {
     const renderItem = ({ item }) => (
         <TouchableOpacity
             onPress={() => navigation.push("ProductActionScreen", item)}
-        style={tw`mb-1 shadow rounded-lg mx-2 bg-blue-50`}
+            style={tw`mb-1 shadow rounded-lg mx-2 bg-blue-50`}
         >
             <List.Item
                 title={item.name}
                 description={item.description}
-                left={(props) => <List.Icon {...props} icon={()=><Icon name="inbox" type="antdesign" />} />}
+                left={(props) => (
+                    <List.Icon
+                        {...props}
+                        icon={() => <Icon name="inbox" type="antdesign" />}
+                    />
+                )}
                 right={() => (
-                    <View style={tw`flex justify-center`} >
+                    <View style={tw`flex justify-center`}>
                         <Text style={tw`font-semibold text-base text-right`}>
                             ₹{item.price}
                         </Text>

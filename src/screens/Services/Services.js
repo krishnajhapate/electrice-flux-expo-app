@@ -29,6 +29,7 @@ export default function Services({ navigation }) {
     const renderItem = ({ item }) => (
         <TouchableOpacity
             onPress={() => navigation.push("ServiceActionScreen", item)}
+            style={tw`mb-1 shadow rounded-lg mx-2 bg-blue-50`}
         >
             <List.Item
                 title={item.name}
@@ -40,7 +41,7 @@ export default function Services({ navigation }) {
                     />
                 )}
                 right={() => (
-                    <View>
+                    <View style={tw`flex justify-center`}>
                         <Text style={tw`font-semibold text-base text-right`}>
                             ₹{item.price}
                         </Text>
