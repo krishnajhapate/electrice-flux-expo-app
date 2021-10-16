@@ -40,7 +40,7 @@ export default function Products({ navigation }) {
                 left={(props) => <List.Icon {...props} icon="folder" />}
                 right={() => (
                     <View>
-                        <Text style={tw`font-bold text-lg text-right`}>
+                        <Text style={tw`font-semibold text-base text-right`}>
                             ₹{item.price}
                         </Text>
                         <Text>Mrp: ₹{item.mrp}</Text>
