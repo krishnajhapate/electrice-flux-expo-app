@@ -2,7 +2,6 @@ import React, { useLayoutEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import tw from "tailwind-react-native-classnames";
 import { Icon } from "react-native-elements";
-import { Appbar } from "react-native-paper";
 
 export default function Home({ navigation }) {
     useLayoutEffect(() => {
