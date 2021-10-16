@@ -12,6 +12,7 @@ import ProductAction from "./Products/ProductAction";
 import Services from "./Services/Services";
 import ServiceAction from "./Services/ServiceAction";
 import Settings from "./Settings";
+import CreateInvoice from "./Invoice/CreateInvoice";
 
 const Stack = createNativeStackNavigator();
 
@@ -68,6 +69,10 @@ export default function Screens() {
                     }}
                 />
                 <Stack.Screen name="HomeScreen" component={Home} />
+                <Stack.Screen
+                    name="CreateInvoiceScreen"
+                    component={CreateInvoice}
+                />
                 <Stack.Screen name="ProductScreen" component={Products} />
                 <Stack.Screen
                     name="ProductActionScreen"
@@ -78,10 +83,7 @@ export default function Screens() {
                     name="ServiceActionScreen"
                     component={ServiceAction}
                 />
-                <Stack.Screen
-                    name="SettingsScreen"
-                    component={Settings}
-                />
+                <Stack.Screen name="SettingsScreen" component={Settings} />
             </Stack.Navigator>
         </>
     );

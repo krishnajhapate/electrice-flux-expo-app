@@ -29,7 +29,7 @@ export default function Home({ navigation }) {
             <View style={tw` h-full mx-auto ml-4 flex-row flex-wrap`}>
                 <TouchableOpacity
                     style={tw`bg-blue-50 shadow-2xl w-5/12 rounded-lg p-5   mr-7 mb-8`}
-                    onPress={() => navigation.navigate("InvoiceScreen")}
+                    onPress={() => navigation.navigate("CreateInvoiceScreen")}
                 >
                     <View style={tw``}>
                         <Icon
