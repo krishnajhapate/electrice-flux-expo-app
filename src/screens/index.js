@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createDrawerNavigator } from "@react-navigation/drawer";
 import Home from "./Home";
 import Products from "./Products/Products";
 import Login from "./Login";
@@ -15,8 +13,6 @@ import Services from "./Services/Services";
 import ServiceAction from "./Services/ServiceAction";
 
 const Stack = createNativeStackNavigator();
-const Drawer = createDrawerNavigator();
-const Tab = createBottomTabNavigator();
 
 const DrawerHeaderStyle = {
     drawerLableShow: false,
