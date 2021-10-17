@@ -4,6 +4,7 @@ import { Icon } from "react-native-elements";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { TextInput, Button } from "react-native-paper";
 import tw from "tailwind-react-native-classnames";
+import BillCreate from './../../components/BillCreate'
 
 export default function CreateInvoice({ navigation }) {
     const [data, setData] = useState({
@@ -18,8 +19,9 @@ export default function CreateInvoice({ navigation }) {
         city: "Bhopal",
         zip: "",
         state: "Madhya Pradesh",
-        edit: true,
+        edit: false,
     });
+    const [items,setItems] = useState([])
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -52,7 +54,11 @@ export default function CreateInvoice({ navigation }) {
                     navigation={navigation}
                 />
             )}
-            {!data.edit && <DetailsofCustomer data={data} setData={setData} />}
+            {!data.edit && <>
+            <DetailsofCustomer data={data} setData={setData} />
+            <BillCreate />
+            </>
+            }
         </View>
     );
 }
