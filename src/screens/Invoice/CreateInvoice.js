@@ -4,7 +4,7 @@ import { Icon } from "react-native-elements";
 import { ScrollView, TouchableOpacity } from "react-native-gesture-handler";
 import { TextInput, Button } from "react-native-paper";
 import tw from "tailwind-react-native-classnames";
-import BillCreate from './../../components/BillCreate'
+import BillCreate from "./../../components/BillCreate";
 
 export default function CreateInvoice({ navigation }) {
     const [data, setData] = useState({
@@ -21,7 +21,14 @@ export default function CreateInvoice({ navigation }) {
         state: "Madhya Pradesh",
         edit: false,
     });
-    const [items,setItems] = useState([])
+    const [items, setItems] = useState([
+        {
+            itemName: "Cobra",
+            quantity: "1",
+            rate: "1",
+            amount: "1",
+        },
+    ]);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -46,19 +53,24 @@ export default function CreateInvoice({ navigation }) {
 
     return (
         <View style={tw`h-full bg-blue-50`}>
-            <Text style={tw`text-base mx-auto mt-4 `}>Details of Customer</Text>
-            {data.edit && (
-                <AddDetails
-                    data={data}
-                    setData={setData}
-                    navigation={navigation}
-                />
-            )}
-            {!data.edit && <>
-            <DetailsofCustomer data={data} setData={setData} />
-            <BillCreate />
-            </>
-            }
+            <ScrollView>
+                <Text style={tw`text-base mx-auto mt-4 `}>
+                    Details of Customer
+                </Text>
+                {data.edit && (
+                    <AddDetails
+                        data={data}
+                        setData={setData}
+                        navigation={navigation}
+                    />
+                )}
+                {!data.edit && (
+                    <>
+                        <DetailsofCustomer data={data} setData={setData} />
+                        <BillCreate />
+                    </>
+                )}
+            </ScrollView>
         </View>
     );
 }
