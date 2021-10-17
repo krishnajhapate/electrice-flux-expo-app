@@ -10,13 +10,14 @@ export default function CreateInvoice({ navigation }) {
         name: "",
         price: "",
         description: "",
-        country: "",
+        country: "India",
         businessName: "",
         email: "",
         address: "",
         phone: "",
-        city: "",
+        city: "Bhopal",
         zip: "",
+        state: "Madhya Pradesh",
     });
 
     useLayoutEffect(() => {
@@ -44,93 +45,85 @@ export default function CreateInvoice({ navigation }) {
         <View style={tw`h-full bg-blue-50`}>
             <Text style={tw`text-base mx-auto mt-4 `}>Details of Customer</Text>
 
-            <ScrollView>
-                <View style={tw`h-full flex-1 p-4`}>
-                    <TextInput
-                        label="Name"
-                        value={data.name}
-                        style={tw`bg-white shadow-2xl mb-3`}
-                        onChangeText={(text) =>
-                            setData({ ...data, name: text })
-                        }
-                    />
-                    <TextInput
-                        label="Business/Compnay Name"
-                        value={String(data.businessName)}
-                        style={tw`bg-white shadow-2xl mb-3`}
-                        onChangeText={(text) =>
-                            setData({ ...data, businessName: text })
-                        }
-                    />
-                    <TextInput
-                        label="Email"
-                        value={String(data.email)}
-                        style={tw`bg-white shadow-2xl mb-3`}
-                        onChangeText={(text) =>
-                            setData({ ...data, email: text })
-                        }
-                    />
-                    <TextInput
-                        label="Phone"
-                        value={data.phone}
-                        style={tw`bg-white shadow-2xl mb-3`}
-                        onChangeText={(text) =>
-                            setData({ ...data, phone: text })
-                        }
-                        keyboardType="number-pad"
-                    />
-                    <TextInput
-                        label="City"
-                        value={data.city}
-                        style={tw`bg-white shadow-2xl mb-3`}
-                        onChangeText={(text) =>
-                            setData({ ...data, city: text })
-                        }
-                    />
-
-                    <TextInput
-                        label="State"
-                        value={data.state}
-                        style={tw`bg-white shadow-2xl mb-3`}
-                        onChangeText={(text) =>
-                            setData({ ...data, state: text })
-                        }
-                    />
-                    <TextInput
-                        label="Postal Code/ Zip Code"
-                        value={data.zip}
-                        style={tw`bg-white shadow-2xl mb-3`}
-                        onChangeText={(text) => setData({ ...data, zip: text })}
-                        keyboardType="number-pad"
-                    />
-                    <TextInput
-                        label="Country"
-                        value={data.country}
-                        style={tw`bg-white shadow-2xl mb-3`}
-                        onChangeText={(text) =>
-                            setData({ ...data, country: text })
-                        }
-                    />
-                    <TextInput
-                        label="Address"
-                        value={data.address}
-                        style={tw`bg-white shadow-2xl mb-3`}
-                        onChangeText={(text) =>
-                            setData({ ...data, address: text })
-                        }
-                    />
-
-                    <Button
-                        onPress={() => navigation.navigate("HomeScreen")}
-                        // loading={isPending}
-                        contentStyle={tw` py-2 rounded-xl `}
-                        style={tw`rounded-xl `}
-                        mode="contained"
-                    >
-                        Add Details
-                    </Button>
-                </View>
-            </ScrollView>
+            <AddDetails data={data} setData={setData} navigation={navigation} />
         </View>
     );
 }
+
+const AddDetails = ({ data, setData ,navigation}) => {
+    return (
+        <ScrollView>
+            <View style={tw`h-full flex-1 p-4`}>
+                <TextInput
+                    label="Name"
+                    value={data.name}
+                    style={tw`bg-white shadow-2xl mb-3`}
+                    onChangeText={(text) => setData({ ...data, name: text })}
+                />
+                <TextInput
+                    label="Business/Compnay Name"
+                    value={String(data.businessName)}
+                    style={tw`bg-white shadow-2xl mb-3`}
+                    onChangeText={(text) =>
+                        setData({ ...data, businessName: text })
+                    }
+                />
+                <TextInput
+                    label="Email"
+                    value={String(data.email)}
+                    style={tw`bg-white shadow-2xl mb-3`}
+                    onChangeText={(text) => setData({ ...data, email: text })}
+                />
+                <TextInput
+                    label="Phone"
+                    value={data.phone}
+                    style={tw`bg-white shadow-2xl mb-3`}
+                    onChangeText={(text) => setData({ ...data, phone: text })}
+                    keyboardType="number-pad"
+                />
+                <TextInput
+                    label="City"
+                    value={data.city}
+                    style={tw`bg-white shadow-2xl mb-3`}
+                    onChangeText={(text) => setData({ ...data, city: text })}
+                />
+
+                <TextInput
+                    label="State"
+                    value={data.state}
+                    style={tw`bg-white shadow-2xl mb-3`}
+                    onChangeText={(text) => setData({ ...data, state: text })}
+                />
+                <TextInput
+                    label="Postal Code/ Zip Code"
+                    value={data.zip}
+                    style={tw`bg-white shadow-2xl mb-3`}
+                    onChangeText={(text) => setData({ ...data, zip: text })}
+                    keyboardType="number-pad"
+                />
+                <TextInput
+                    label="Country"
+                    value={data.country}
+                    style={tw`bg-white shadow-2xl mb-3`}
+                    onChangeText={(text) => setData({ ...data, country: text })}
+                />
+                <TextInput
+                    label="Address"
+                    value={data.address}
+                    style={tw`bg-white shadow-2xl mb-3`}
+                    onChangeText={(text) => setData({ ...data, address: text })}
+                />
+
+                <Button
+                    onPress={() => navigation.navigate("HomeScreen")}
+                    // loading={isPending}
+                    contentStyle={tw` py-2 rounded-xl `}
+                    style={tw`rounded-xl `}
+                    mode="contained"
+                >
+                    Add Details
+                </Button>
+            </View>
+        </ScrollView>
+    );
+};
