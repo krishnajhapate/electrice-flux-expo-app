@@ -4,8 +4,9 @@ import { TextInput } from "react-native-paper";
 import tw from "tailwind-react-native-classnames";
 
 export default function BillCreate({ items, setItems }) {
+    console.log(items);
     const [currentItem, setCurrentItem] = useState({
-        itemName: "Cobra",
+        itemName: "",
         show: false,
         quantity: "1",
         rate: "1",
@@ -16,7 +17,7 @@ export default function BillCreate({ items, setItems }) {
             <Text style={tw`font-bold text-lg text-center `}>Add Items</Text>
 
             <View>
-                <ShowDetails />
+                {items && <ShowDetails items={items} />}
                 <AddItemForm
                     currentItem={currentItem}
                     setCurrentItem={setCurrentItem}
@@ -77,14 +78,18 @@ const ShowDetails = ({ items }) => {
                 <Text style={tw`text-xs text-white`}>Quantity</Text>
                 <Text style={tw`text-xs text-white`}>Amount</Text>
             </View>
-
-            <View style={tw`flex-row justify-between  bg-gray-700 p-1 rounded`}>
-                <Text style={tw`text-xs text-white`}>Sno.</Text>
-                <Text style={tw`text-xs text-white`}>Item</Text>
-                <Text style={tw`text-xs text-white`}>Rate</Text>
-                <Text style={tw`text-xs text-white`}>Quantity</Text>
-                <Text style={tw`text-xs text-white`}>Amount</Text>
-            </View>
+            {items.map((item, idx) => (
+                <View
+                    key={idx}
+                    style={tw`flex-row justify-between   p-1 rounded`}
+                >
+                    <Text style={tw`text-xs `}>{idx + 1}</Text>
+                    <Text style={tw`text-xs `}>{item.itemName}</Text>
+                    <Text style={tw`text-xs `}>{item.rate}</Text>
+                    <Text style={tw`text-xs `}>{item.quantity}</Text>
+                    <Text style={tw`text-xs `}>{item.amount}</Text>
+                </View>
+            ))}
         </View>
     );
 };

@@ -67,7 +67,7 @@ export default function CreateInvoice({ navigation }) {
                 {!data.edit && (
                     <>
                         <DetailsofCustomer data={data} setData={setData} />
-                        <BillCreate />
+                        <BillCreate items={items} setItems={setItems} />
                     </>
                 )}
             </ScrollView>
