@@ -18,6 +18,7 @@ export default function CreateInvoice({ navigation }) {
         city: "Bhopal",
         zip: "",
         state: "Madhya Pradesh",
+        edit: true,
     });
 
     useLayoutEffect(() => {
@@ -44,13 +45,19 @@ export default function CreateInvoice({ navigation }) {
     return (
         <View style={tw`h-full bg-blue-50`}>
             <Text style={tw`text-base mx-auto mt-4 `}>Details of Customer</Text>
-
-            <AddDetails data={data} setData={setData} navigation={navigation} />
+            {data.edit && (
+                <AddDetails
+                    data={data}
+                    setData={setData}
+                    navigation={navigation}
+                />
+            )}
+            {!data.edit && <DetailsofCustomer data={data} setData={setData} />}
         </View>
     );
 }
 
-const AddDetails = ({ data, setData ,navigation}) => {
+const AddDetails = ({ data, setData, navigation }) => {
     return (
         <ScrollView>
             <View style={tw`h-full flex-1 p-4`}>
@@ -115,7 +122,7 @@ const AddDetails = ({ data, setData ,navigation}) => {
                 />
 
                 <Button
-                    onPress={() => navigation.navigate("HomeScreen")}
+                    onPress={() => setData({ ...data, edit: false })}
                     // loading={isPending}
                     contentStyle={tw` py-2 rounded-xl `}
                     style={tw`rounded-xl `}
@@ -125,5 +132,61 @@ const AddDetails = ({ data, setData ,navigation}) => {
                 </Button>
             </View>
         </ScrollView>
+    );
+};
+
+const DetailsofCustomer = ({ data, setData }) => {
+    return (
+        <View style={tw` mt-3 mx-2`}>
+            <Button
+                onPress={() => setData({ ...data, edit: true })}
+                // loading={isPending}
+                contentStyle={tw` py-2 rounded-xl `}
+                style={tw`rounded-xl mb-2`}
+                mode="contained"
+            >
+                Edit Details
+            </Button>
+            <View style={tw`  ml-5 w-full`}>
+                <View style={tw` mx-auto flex-row w-full`}>
+                    <Text style={tw`font-bold w-1/2`}>Name: </Text>
+                    <Text style={tw``}>{data.name}</Text>
+                </View>
+                <View style={tw` mx-auto flex-row w-full`}>
+                    <Text style={tw`font-bold w-1/2`}>
+                        Business/Company Name:
+                    </Text>
+                    <Text style={tw``}>{data.businessName}</Text>
+                </View>
+                <View style={tw` mx-auto flex-row w-full`}>
+                    <Text style={tw`font-bold w-1/2`}>Email: </Text>
+                    <Text style={tw``}>{data.email}</Text>
+                </View>
+                <View style={tw` mx-auto flex-row w-full`}>
+                    <Text style={tw`font-bold w-1/2`}>Phone: </Text>
+                    <Text style={tw``}>{data.phone}</Text>
+                </View>
+                <View style={tw` mx-auto flex-row w-full`}>
+                    <Text style={tw`font-bold w-1/2`}>City: </Text>
+                    <Text style={tw``}>{data.city}</Text>
+                </View>
+                <View style={tw` mx-auto flex-row w-full`}>
+                    <Text style={tw`font-bold w-1/2`}>State: </Text>
+                    <Text style={tw``}>{data.state}</Text>
+                </View>
+                <View style={tw` mx-auto flex-row w-full`}>
+                    <Text style={tw`font-bold w-1/2`}>Postal/Zip Code: </Text>
+                    <Text style={tw``}>{data.zip}</Text>
+                </View>
+                <View style={tw` mx-auto flex-row w-full`}>
+                    <Text style={tw`font-bold w-1/2`}>Country: </Text>
+                    <Text style={tw``}>{data.country}</Text>
+                </View>
+                <View style={tw` mx-auto flex-row w-full`}>
+                    <Text style={tw`font-bold w-1/2`}>Address: </Text>
+                    <Text style={tw``}>{data.address}</Text>
+                </View>
+            </View>
+        </View>
     );
 };
