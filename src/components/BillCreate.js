@@ -38,6 +38,7 @@ export default function BillCreate({ items, setItems }) {
                     <ShowDetails
                         items={items}
                         setCurrentItem={setCurrentItem}
+                        setCurrentActions={setCurrentActions}
                     />
                 )}
                 <AddItemForm
@@ -105,13 +106,18 @@ const AddItemForm = ({ currentItem, setCurrentItem, handleAdd }) => {
     );
 };
 
-const ShowDetails = ({ items, setCurrentItem }) => {
+const ShowDetails = ({ items, setCurrentItem, setCurrentActions }) => {
     return (
         <View>
             {items.map((item, idx) => (
                 <TouchableOpacity
                     key={idx}
-                    onPress={() => setCurrentItem({ ...item, indx: idx })}
+                    onPress={() => {
+                        setCurrentActions((actions) => {
+                            return { actions, edit: true, index: idx };
+                        });
+                        setCurrentItem({ ...item, indx: idx });
+                    }}
                 >
                     <View
                         style={tw` border-gray-400 border justify-between mb-4  p-1 rounded`}
