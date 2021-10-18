@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from "react";
+import { Alert } from "react-native";
 import { View, Text } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { TextInput, Button } from "react-native-paper";
 import tw from "tailwind-react-native-classnames";
 
+const initTemp = {
+    itemName: "",
+    quantity: "1",
+    rate: "1",
+    amount: "1",
+};
+
 export default function BillCreate({ items, setItems }) {
     console.log(items);
-    const [currentItem, setCurrentItem] = useState({
-        itemName: "",
+    const [currentItem, setCurrentItem] = useState(initTemp);
+
+    const [currentActions, setCurrentActions] = useState({
         show: false,
-        quantity: "1",
-        rate: "1",
-        amount: "1",
+        edit: false,
+        index: null,
     });
+    const handleAdd = () => {
+        setItems([...items, currentItem]);
+        Alert("added");
+    };
     return (
         <View style={tw`my-5 w-11/12  mx-auto bg-blue-50`}>
             <Text
@@ -31,13 +43,14 @@ export default function BillCreate({ items, setItems }) {
                 <AddItemForm
                     currentItem={currentItem}
                     setCurrentItem={setCurrentItem}
+                    handleAdd={handleAdd}
                 />
             </View>
         </View>
     );
 }
 
-const AddItemForm = ({ currentItem, setCurrentItem }) => {
+const AddItemForm = ({ currentItem, setCurrentItem, handleAdd }) => {
     return (
         <View style={tw`mt-5`}>
             <TextInput
@@ -49,8 +62,8 @@ const AddItemForm = ({ currentItem, setCurrentItem }) => {
                 value={currentItem.itemName}
                 style={tw`bg-blue-50 shadow-2xl mb-3 `}
             />
-            <Text style={tw`mb-2`} >
-                Amount:{" "}₹
+            <Text style={tw`mb-2`}>
+                Amount: ₹
                 {String(
                     Number(currentItem.quantity) * Number(currentItem.rate)
                 )}{" "}
@@ -80,7 +93,7 @@ const AddItemForm = ({ currentItem, setCurrentItem }) => {
             </View>
 
             <Button
-                onPress={() => setData({ ...currentItem, edit: false })}
+                onPress={handleAdd}
                 // loading={isPending}
                 contentStyle={tw` py-2 rounded-xl `}
                 style={tw`rounded-xl `}
