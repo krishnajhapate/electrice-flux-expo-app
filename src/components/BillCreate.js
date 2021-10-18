@@ -169,6 +169,12 @@ const AddItemForm = ({
 };
 
 const ShowDetails = ({ items, setCurrentItem, setCurrentActions }) => {
+    const getTotal = () => {
+        let total = 0;
+        items.map((item) => (total = total + Number(item.amount)));
+        console.log(total);
+        return String(total);
+    };
     return (
         <View>
             {items.map((item, idx) => (
@@ -214,6 +220,13 @@ const ShowDetails = ({ items, setCurrentItem, setCurrentActions }) => {
                     </View>
                 </TouchableOpacity>
             ))}
+            <View>
+                <Text
+                    style={tw`font-bold text-base text-white text-center mb-3 bg-gray-600 rounded p-1`}
+                >
+                    Total Amount: ₹{getTotal()}
+                </Text>
+            </View>
         </View>
     );
 };
