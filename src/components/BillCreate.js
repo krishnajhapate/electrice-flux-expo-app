@@ -49,7 +49,12 @@ const AddItemForm = ({ currentItem, setCurrentItem }) => {
                 value={currentItem.itemName}
                 style={tw`bg-blue-50 shadow-2xl mb-3 `}
             />
-            <Text> </Text>
+            <Text style={tw`mb-2`} >
+                Amount:{" "}₹
+                {String(
+                    Number(currentItem.quantity) * Number(currentItem.rate)
+                )}{" "}
+            </Text>
             <View style={tw`flex-row justify-between`}>
                 <TextInput
                     label="Qantity"
@@ -61,7 +66,7 @@ const AddItemForm = ({ currentItem, setCurrentItem }) => {
                     }
                     value={currentItem.quantity}
                     keyboardType="number-pad"
-                    style={[tw`bg-blue-50 shadow-2xl mb-3  `,{width:178}]}
+                    style={[tw`bg-blue-50 shadow-2xl mb-3  `, { width: 178 }]}
                 />
                 <TextInput
                     label="Rate in ₹"
@@ -70,7 +75,7 @@ const AddItemForm = ({ currentItem, setCurrentItem }) => {
                     }
                     value={currentItem.rate}
                     keyboardType="number-pad"
-                    style={[tw`bg-blue-50 shadow-2xl mb-3 `,{width:178}]}
+                    style={[tw`bg-blue-50 shadow-2xl mb-3 `, { width: 178 }]}
                 />
             </View>
 
@@ -90,7 +95,6 @@ const AddItemForm = ({ currentItem, setCurrentItem }) => {
 const ShowDetails = ({ items, setCurrentItem }) => {
     return (
         <View>
-           
             {items.map((item, idx) => (
                 <TouchableOpacity
                     key={idx}
