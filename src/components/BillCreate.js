@@ -14,7 +14,7 @@ export default function BillCreate({ items, setItems }) {
         amount: "1",
     });
     return (
-        <View style={tw`mt-5 w-11/12 mx-auto bg-blue-50`}>
+        <View style={tw`my-5 w-11/12  mx-auto bg-blue-50`}>
             <Text
                 style={tw`font-bold text-lg text-white text-center mb-3 bg-gray-600 rounded p-1`}
             >

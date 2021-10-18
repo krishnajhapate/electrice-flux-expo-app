@@ -52,9 +52,9 @@ export default function CreateInvoice({ navigation }) {
     }, [navigation]);
 
     return (
-        <View style={tw`h-full bg-blue-50 mb-5`}>
-            <ScrollView>
-                <Text style={tw`text-base mx-auto mt-4 `}>
+        <View style={tw`h-full bg-blue-50 `}>
+            <ScrollView style={tw``}>
+                <Text style={tw`text-base mx-auto mt-1 `}>
                     Details of Customer
                 </Text>
                 {data.edit && (
