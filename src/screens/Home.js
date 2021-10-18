@@ -14,6 +14,7 @@ export default function Home({ navigation }) {
             headerTitleStyle: {
                 fontWeight: "bold",
             },
+            headerLeft: false,
             headerRight: () => (
                 <TouchableOpacity
                     onPress={() => navigation.push("HomeScreen")}
