@@ -23,7 +23,8 @@ export default function BillCreate({ items, setItems }) {
     });
     const handleAdd = () => {
         setItems([...items, currentItem]);
-        Alert("added");
+        setCurrentItem(initTemp);
+        // Alert("added");
     };
     return (
         <View style={tw`my-5 w-11/12  mx-auto bg-blue-50`}>
@@ -44,6 +45,8 @@ export default function BillCreate({ items, setItems }) {
                 <AddItemForm
                     currentItem={currentItem}
                     setCurrentItem={setCurrentItem}
+                    setCurrentActions={setCurrentActions}
+                    currentActions={currentActions}
                     handleAdd={handleAdd}
                 />
             </View>
@@ -51,7 +54,13 @@ export default function BillCreate({ items, setItems }) {
     );
 }
 
-const AddItemForm = ({ currentItem, setCurrentItem, handleAdd }) => {
+const AddItemForm = ({
+    currentItem,
+    setCurrentItem,
+    handleAdd,
+    currentActions,
+    setCurrentActions,
+}) => {
     return (
         <View style={tw`mt-5`}>
             <TextInput
@@ -92,16 +101,27 @@ const AddItemForm = ({ currentItem, setCurrentItem, handleAdd }) => {
                     style={[tw`bg-blue-50 shadow-2xl mb-3 `, { width: 178 }]}
                 />
             </View>
-
-            <Button
-                onPress={handleAdd}
-                // loading={isPending}
-                contentStyle={tw` py-2 rounded-xl `}
-                style={tw`rounded-xl `}
-                mode="contained"
-            >
-                Add Item
-            </Button>
+            {currentActions.index ? (
+                <Button
+                    onPress={handleAdd}
+                    // loading={isPending}
+                    contentStyle={tw` py-2 rounded-xl `}
+                    style={tw`rounded-xl `}
+                    mode="contained"
+                >
+                    Update Item
+                </Button>
+            ) : (
+                <Button
+                    onPress={handleAdd}
+                    // loading={isPending}
+                    contentStyle={tw` py-2 rounded-xl `}
+                    style={tw`rounded-xl `}
+                    mode="contained"
+                >
+                    Add Item
+                </Button>
+            )}
         </View>
     );
 };
