@@ -25,7 +25,6 @@ export default function BillCreate({ items, setItems }) {
     const handleAdd = () => {
         setItems([...items, currentItem]);
         setCurrentItem(initTemp);
-        // Alert("added");
     };
     const handleDelete = (index) => {
         let newArray = items;
