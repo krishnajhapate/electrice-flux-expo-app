@@ -35,7 +35,13 @@ export default function BillCreate({ items, setItems }) {
         setCurrentActions(iniActions);
     };
 
-    const handleUpdate = (index, data) => {};
+    const handleUpdate = (index) => {
+        let newArray = items;
+        newArray[index] = currentItem;
+        setItems(newArray);
+        setCurrentItem(initTemp);
+        setCurrentActions(iniActions);
+    };
     return (
         <View style={tw`my-5 w-11/12  mx-auto bg-blue-50`}>
             <Text
@@ -59,6 +65,7 @@ export default function BillCreate({ items, setItems }) {
                     currentActions={currentActions}
                     handleAdd={handleAdd}
                     handleDelete={handleDelete}
+                    handleUpdate={handleUpdate}
                 />
             </View>
         </View>
@@ -72,6 +79,7 @@ const AddItemForm = ({
     currentActions,
     setCurrentActions,
     handleDelete,
+    handleUpdate,
 }) => {
     return (
         <View style={tw`mt-5`}>
@@ -127,7 +135,7 @@ const AddItemForm = ({
                         Delete
                     </Button>
                     <Button
-                        onPress={() => navigation.navigate("ProductScreen")}
+                        onPress={() => handleUpdate(currentItem.index)}
                         // loading={isPending}
                         contentStyle={tw` py-2 rounded-xl `}
                         style={tw`rounded-xl w-1/3`}
