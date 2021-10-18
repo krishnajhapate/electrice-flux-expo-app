@@ -26,6 +26,7 @@ export default function BillCreate({ items, setItems }) {
     const handleAdd = () => {
         setItems([
             ...items,
+
             {
                 ...currentItem,
                 amount: Number(currentItem.quantity) * Number(currentItem.rate),
@@ -35,8 +36,7 @@ export default function BillCreate({ items, setItems }) {
     };
     const handleDelete = (index) => {
         let newArray = items;
-        delete newArray[index];
-        setItems(newArray);
+        setItems(newArray.filter((item, idx) => idx !== index));
         setCurrentItem(initTemp);
         setCurrentActions(iniActions);
     };
@@ -51,16 +51,17 @@ export default function BillCreate({ items, setItems }) {
         setCurrentItem(initTemp);
         setCurrentActions(iniActions);
     };
+    useEffect(() => {}, [items]);
     return (
         <View style={tw`my-5 w-11/12  mx-auto bg-blue-50`}>
             <Text
                 style={tw`font-bold text-lg text-white text-center mb-3 bg-gray-600 rounded p-1`}
             >
-                Items (Total {items.length})
+                Items
             </Text>
 
             <View>
-                {items && (
+                {items.length > 0 && (
                     <ShowDetails
                         items={items}
                         setCurrentItem={setCurrentItem}
@@ -77,6 +78,30 @@ export default function BillCreate({ items, setItems }) {
                     handleUpdate={handleUpdate}
                 />
             </View>
+            {items.length > 0 && (
+                <View
+                    style={tw`flex flex-row w-full mx-auto justify-around mt-5`}
+                >
+                    <Button
+                        // onPress={() => handleDelete(currentItem.index)}
+                        // loading={isPending}
+                        contentStyle={tw` py-2 rounded-xl `}
+                        style={tw`rounded-xl w-5/12 bg-red-700`}
+                        mode="contained"
+                    >
+                        Preview Bill
+                    </Button>
+                    <Button
+                        // onPress={() => handleUpdate(currentItem.index)}
+                        // loading={isPending}
+                        contentStyle={tw` py-2 rounded-xl `}
+                        style={tw`rounded-xl w-5/12`}
+                        mode="contained"
+                    >
+                        Create Bill
+                    </Button>
+                </View>
+            )}
         </View>
     );
 }
@@ -171,55 +196,59 @@ const AddItemForm = ({
 const ShowDetails = ({ items, setCurrentItem, setCurrentActions }) => {
     const getTotal = () => {
         let total = 0;
-        items.map((item) => (total = total + Number(item.amount)));
+        items.map((item) => (total = total + Number(item?.amount)));
         console.log(total);
         return String(total);
     };
     return (
         <View>
-            {items.map((item, idx) => (
-                <TouchableOpacity
-                    key={idx}
-                    onPress={() => {
-                        setCurrentActions((actions) => {
-                            return { actions, edit: true, index: idx };
-                        });
-                        setCurrentItem({ ...item, index: idx });
-                    }}
-                >
-                    <View
-                        style={tw` border-gray-400 border justify-between mb-4  p-1 rounded`}
+            {items &&
+                items?.map((item, idx) => (
+                    <TouchableOpacity
+                        key={idx}
+                        onPress={() => {
+                            setCurrentActions((actions) => {
+                                return { actions, edit: true, index: idx };
+                            });
+                            setCurrentItem({ ...item, index: idx });
+                        }}
                     >
-                        <View style={tw` flex-row  `}>
-                            <Text style={tw`font-bold text-sm `}> Item: </Text>
-                            <Text style={tw`px-2`}>{item.itemName}</Text>
+                        <View
+                            style={tw` border-gray-400 border justify-between mb-4  p-1 rounded`}
+                        >
+                            <View style={tw` flex-row  `}>
+                                <Text style={tw`font-bold text-sm `}>
+                                    {" "}
+                                    Item:{" "}
+                                </Text>
+                                <Text style={tw`px-2`}>{item?.itemName}</Text>
+                            </View>
+                            <View style={tw`flex-row justify-between`}>
+                                <Text style={tw` `}>
+                                    <Text style={tw`font-bold text-sm`}>
+                                        {" "}
+                                        Rate:{" "}
+                                    </Text>{" "}
+                                    ₹{item?.rate}
+                                </Text>
+                                <Text style={tw` `}>
+                                    <Text style={tw`font-bold text-sm`}>
+                                        {" "}
+                                        Quantity:{" "}
+                                    </Text>{" "}
+                                    {item?.quantity}
+                                </Text>
+                                <Text style={tw` `}>
+                                    <Text style={tw`font-bold text-sm`}>
+                                        {" "}
+                                        Amount:{" "}
+                                    </Text>{" "}
+                                    ₹{item?.amount}
+                                </Text>
+                            </View>
                         </View>
-                        <View style={tw`flex-row justify-between`}>
-                            <Text style={tw` `}>
-                                <Text style={tw`font-bold text-sm`}>
-                                    {" "}
-                                    Rate:{" "}
-                                </Text>{" "}
-                                ₹{item.rate}
-                            </Text>
-                            <Text style={tw` `}>
-                                <Text style={tw`font-bold text-sm`}>
-                                    {" "}
-                                    Quantity:{" "}
-                                </Text>{" "}
-                                {item.quantity}
-                            </Text>
-                            <Text style={tw` `}>
-                                <Text style={tw`font-bold text-sm`}>
-                                    {" "}
-                                    Amount:{" "}
-                                </Text>{" "}
-                                ₹{item.amount}
-                            </Text>
-                        </View>
-                    </View>
-                </TouchableOpacity>
-            ))}
+                    </TouchableOpacity>
+                ))}
             <View>
                 <Text
                     style={tw`font-bold text-base text-white text-center mb-3 bg-gray-600 rounded p-1`}

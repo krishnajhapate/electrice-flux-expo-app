@@ -22,12 +22,12 @@ export default function CreateInvoice({ navigation }) {
         edit: false,
     });
     const [items, setItems] = useState([
-        {
-            itemName: "Ac Service Repair",
-            quantity: "1",
-            rate: "1",
-            amount: "1",
-        },
+        // {
+        //     itemName: "Ac Service Repair",
+        //     quantity: "1",
+        //     rate: "1",
+        //     amount: "1",
+        // },
     ]);
 
     useLayoutEffect(() => {
