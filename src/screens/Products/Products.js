@@ -14,7 +14,7 @@ export default function Products({ navigation }) {
         navigation.setOptions({
             title: "Products",
             headerStyle: {
-                backgroundColor: "darkgreen",
+                backgroundColor: "#2E8BC0",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -68,7 +68,7 @@ export default function Products({ navigation }) {
                     small
                     style={[
                         tw`bottom-0 absolute m-12 p-3 rounded-full right-0 `,
-                        { backgroundColor: "darkgreen" },
+                        { backgroundColor: "#2E8BC0" },
                     ]}
                     size={50}
                     icon="plus"

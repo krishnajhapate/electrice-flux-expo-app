@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { View, Text } from "react-native";
-import { TextInput } from "react-native-paper";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { TextInput, Button } from "react-native-paper";
 import tw from "tailwind-react-native-classnames";
 
 export default function BillCreate({ items, setItems }) {
@@ -17,7 +18,12 @@ export default function BillCreate({ items, setItems }) {
             <Text style={tw`font-bold text-lg text-center `}>Add Items</Text>
 
             <View>
-                {items && <ShowDetails items={items} />}
+                {items && (
+                    <ShowDetails
+                        items={items}
+                        setCurrentItem={setCurrentItem}
+                    />
+                )}
                 <AddItemForm
                     currentItem={currentItem}
                     setCurrentItem={setCurrentItem}
@@ -35,6 +41,8 @@ const AddItemForm = ({ currentItem, setCurrentItem }) => {
                 onChangeText={(text) =>
                     setCurrentItem({ ...currentItem, itemName: text })
                 }
+                multiline={true}
+
                 value={currentItem.itemName}
                 style={tw`bg-blue-50 shadow-2xl mb-3 `}
             />
@@ -64,31 +72,47 @@ const AddItemForm = ({ currentItem, setCurrentItem }) => {
                 disabled
                 style={tw`bg-blue-50 shadow-2xl mb-3 `}
             />
+            {}
+            <Button
+                onPress={() => setData({ ...currentItem, edit: false })}
+                // loading={isPending}
+                contentStyle={tw` py-2 rounded-xl `}
+                style={tw`rounded-xl `}
+                mode="contained"
+            >
+                Add Item
+            </Button>
         </View>
     );
 };
 
-const ShowDetails = ({ items }) => {
+const ShowDetails = ({ items, setCurrentItem }) => {
     return (
         <View>
             <View style={tw`flex-row justify-between  bg-gray-700 p-1 rounded`}>
                 <Text style={tw`text-xs text-white`}>Sno.</Text>
-                <Text style={tw`text-xs text-white`}>Item</Text>
+                <Text style={tw`text-xs w-1/4 text-white`}>Item</Text>
                 <Text style={tw`text-xs text-white`}>Rate</Text>
                 <Text style={tw`text-xs text-white`}>Quantity</Text>
                 <Text style={tw`text-xs text-white`}>Amount</Text>
             </View>
             {items.map((item, idx) => (
-                <View
-                    key={idx}
-                    style={tw`flex-row justify-between   p-1 rounded`}
+                <TouchableOpacity
+                    onPress={() => setCurrentItem({ ...item, indx: idx })}
                 >
-                    <Text style={tw`text-xs `}>{idx + 1}</Text>
-                    <Text style={tw`text-xs `}>{item.itemName}</Text>
-                    <Text style={tw`text-xs `}>{item.rate}</Text>
-                    <Text style={tw`text-xs `}>{item.quantity}</Text>
-                    <Text style={tw`text-xs `}>{item.amount}</Text>
-                </View>
+                    <View
+                        key={idx}
+                        style={tw`flex-row justify-between   p-1 rounded`}
+                    >
+                        <Text style={tw`text-xs -mr-8`}>{idx + 1}</Text>
+                        <Text style={tw`text-xs  `}>
+                            {item.itemName.slice(1, 20)}...
+                        </Text>
+                        <Text style={tw`text-xs `}>{item.rate}</Text>
+                        <Text style={tw`text-xs `}>{item.quantity}</Text>
+                        <Text style={tw`text-xs `}>{item.amount}</Text>
+                    </View>
+                </TouchableOpacity>
             ))}
         </View>
     );

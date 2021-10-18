@@ -23,7 +23,7 @@ export default function CreateInvoice({ navigation }) {
     });
     const [items, setItems] = useState([
         {
-            itemName: "Cobra",
+            itemName: "lex-row justify-between  bg-gray-700 p-1 rounded",
             quantity: "1",
             rate: "1",
             amount: "1",
@@ -34,7 +34,7 @@ export default function CreateInvoice({ navigation }) {
         navigation.setOptions({
             title: "Create Bill",
             headerStyle: {
-                backgroundColor: "darkgreen",
+                backgroundColor: "#2E8BC0",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {

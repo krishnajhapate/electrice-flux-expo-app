@@ -52,7 +52,7 @@ export default function Screens() {
                     },
                     headerBackTitle: "Back",
                 }}
-                initialRouteName="CreateInvoiceScreen"
+                initialRouteName="HomeScreen"
             >
                 <Stack.Screen
                     name="LoginScreen"

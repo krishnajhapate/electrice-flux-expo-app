@@ -8,7 +8,7 @@ export default function Home({ navigation }) {
         navigation.setOptions({
             title: "Dashboard",
             headerStyle: {
-                backgroundColor: "darkgreen",
+                backgroundColor: "#2E8BC0",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
@@ -54,7 +54,7 @@ export default function Home({ navigation }) {
                         <Icon
                             name="cart"
                             type="zocial"
-                            color="blue"
+                            color="#c04040"
                             size={60}
                         />
                         <Text
@@ -73,7 +73,7 @@ export default function Home({ navigation }) {
                         <Icon
                             name="home-repair-service"
                             type="material"
-                            color="#674ea7"
+                            color="#a45ee5"
                             size={60}
                         />
                         <Text
@@ -91,7 +91,7 @@ export default function Home({ navigation }) {
                         <Icon
                             name="file-invoice-dollar"
                             type="font-awesome-5"
-                            color="#0f4b55"
+                            color="#9f7374"
                             size={60}
                         />
                         <Text

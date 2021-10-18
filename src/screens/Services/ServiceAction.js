@@ -21,7 +21,7 @@ export default function ServiceAction({ route, navigation }) {
         navigation.setOptions({
             title: "Add New Service",
             headerStyle: {
-                backgroundColor: "darkgreen",
+                backgroundColor: "#2E8BC0",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {

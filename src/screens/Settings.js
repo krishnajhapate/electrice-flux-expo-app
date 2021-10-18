@@ -25,7 +25,7 @@ export default function Settings({ navigation }) {
         navigation.setOptions({
             title: "Settings",
             headerStyle: {
-                backgroundColor: "darkgreen",
+                backgroundColor: "#2E8BC0",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {

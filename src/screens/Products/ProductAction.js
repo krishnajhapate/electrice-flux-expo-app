@@ -22,7 +22,7 @@ export default function ProductAction({ route, navigation }) {
         navigation.setOptions({
             title: route.params ? "Update" : "Add Product",
             headerStyle: {
-                backgroundColor: "darkgreen",
+                backgroundColor: "#2E8BC0",
             },
             headerTintColor: "#fff",
             headerTitleStyle: {
