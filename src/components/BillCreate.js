@@ -15,7 +15,11 @@ export default function BillCreate({ items, setItems }) {
     });
     return (
         <View style={tw`mt-5 w-11/12 mx-auto bg-blue-50`}>
-            <Text style={tw`font-bold text-lg text-center `}>Add Items</Text>
+            <Text
+                style={tw`font-bold text-lg text-white text-center mb-3 bg-gray-600 rounded p-1`}
+            >
+                Items (Total {items.length})
+            </Text>
 
             <View>
                 {items && (
@@ -42,7 +46,6 @@ const AddItemForm = ({ currentItem, setCurrentItem }) => {
                     setCurrentItem({ ...currentItem, itemName: text })
                 }
                 multiline={true}
-
                 value={currentItem.itemName}
                 style={tw`bg-blue-50 shadow-2xl mb-3 `}
             />
@@ -89,28 +92,39 @@ const AddItemForm = ({ currentItem, setCurrentItem }) => {
 const ShowDetails = ({ items, setCurrentItem }) => {
     return (
         <View>
-            <View style={tw`flex-row justify-between  bg-gray-700 p-1 rounded`}>
+            {/* <View style={tw`flex-row justify-between  bg-gray-700 p-1 rounded`}>
                 <Text style={tw`text-xs text-white`}>Sno.</Text>
                 <Text style={tw`text-xs w-1/4 text-white`}>Item</Text>
                 <Text style={tw`text-xs text-white`}>Rate</Text>
                 <Text style={tw`text-xs text-white`}>Quantity</Text>
                 <Text style={tw`text-xs text-white`}>Amount</Text>
-            </View>
+            </View> */}
             {items.map((item, idx) => (
                 <TouchableOpacity
+                    key={idx}
                     onPress={() => setCurrentItem({ ...item, indx: idx })}
                 >
                     <View
-                        key={idx}
-                        style={tw`flex-row justify-between   p-1 rounded`}
+                        style={tw` border-gray-400 border justify-between mb-4  p-1 rounded`}
                     >
-                        <Text style={tw`text-xs -mr-8`}>{idx + 1}</Text>
-                        <Text style={tw`text-xs  `}>
-                            {item.itemName.slice(1, 20)}...
-                        </Text>
-                        <Text style={tw`text-xs `}>{item.rate}</Text>
-                        <Text style={tw`text-xs `}>{item.quantity}</Text>
-                        <Text style={tw`text-xs `}>{item.amount}</Text>
+                        <View style={tw` flex-row  `}>
+                            <Text style={tw`font-bold text-sm `}> Item: </Text>
+                            <Text style={tw`px-2`}>{item.itemName}</Text>
+                        </View>
+                        <View style={tw`flex-row justify-between`}>
+                            <Text style={tw` `}>
+                                <Text style={tw`font-bold text-sm`}> Rate: </Text> ₹
+                                {item.rate}
+                            </Text>
+                            <Text style={tw` `}>
+                                <Text style={tw`font-bold text-sm`}> Quantity: </Text>{" "}
+                                {item.quantity}
+                            </Text>
+                            <Text style={tw` `}>
+                                <Text style={tw`font-bold text-sm`}> Amount: </Text> ₹
+                                {item.amount}
+                            </Text>
+                        </View>
                     </View>
                 </TouchableOpacity>
             ))}

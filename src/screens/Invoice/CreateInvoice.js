@@ -23,7 +23,7 @@ export default function CreateInvoice({ navigation }) {
     });
     const [items, setItems] = useState([
         {
-            itemName: "lex-row justify-between  bg-gray-700 p-1 rounded",
+            itemName: "Ac Service Repair",
             quantity: "1",
             rate: "1",
             amount: "1",
@@ -52,7 +52,7 @@ export default function CreateInvoice({ navigation }) {
     }, [navigation]);
 
     return (
-        <View style={tw`h-full bg-blue-50`}>
+        <View style={tw`h-full bg-blue-50 mb-5`}>
             <ScrollView>
                 <Text style={tw`text-base mx-auto mt-4 `}>
                     Details of Customer
@@ -155,7 +155,7 @@ const AddDetails = ({ data, setData, navigation }) => {
 
 const DetailsofCustomer = ({ data, setData }) => {
     return (
-        <View style={tw` mt-3 mx-2`}>
+        <View style={tw` mt-3 mx-4`}>
             <Button
                 onPress={() => setData({ ...data, edit: true })}
                 // loading={isPending}
