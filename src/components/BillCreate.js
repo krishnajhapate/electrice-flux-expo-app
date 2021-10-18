@@ -49,33 +49,31 @@ const AddItemForm = ({ currentItem, setCurrentItem }) => {
                 value={currentItem.itemName}
                 style={tw`bg-blue-50 shadow-2xl mb-3 `}
             />
-            <TextInput
-                label="Qantity"
-                onChangeText={(text) =>
-                    setCurrentItem({ ...currentItem, quantity: String(text) })
-                }
-                value={currentItem.quantity}
-                keyboardType="number-pad"
-                style={tw`bg-blue-50 shadow-2xl mb-3 `}
-            />
-            <TextInput
-                label="Rate in ₹"
-                onChangeText={(text) =>
-                    setCurrentItem({ ...currentItem, rate: String(text) })
-                }
-                value={currentItem.rate}
-                keyboardType="number-pad"
-                style={tw`bg-blue-50 shadow-2xl mb-3 `}
-            />
-            <TextInput
-                label="Amount in ₹"
-                value={String(
-                    Number(currentItem.rate) * Number(currentItem.quantity)
-                )}
-                disabled
-                style={tw`bg-blue-50 shadow-2xl mb-3 `}
-            />
-            {}
+            <Text> </Text>
+            <View style={tw`flex-row justify-between`}>
+                <TextInput
+                    label="Qantity"
+                    onChangeText={(text) =>
+                        setCurrentItem({
+                            ...currentItem,
+                            quantity: String(text),
+                        })
+                    }
+                    value={currentItem.quantity}
+                    keyboardType="number-pad"
+                    style={[tw`bg-blue-50 shadow-2xl mb-3  `,{width:178}]}
+                />
+                <TextInput
+                    label="Rate in ₹"
+                    onChangeText={(text) =>
+                        setCurrentItem({ ...currentItem, rate: String(text) })
+                    }
+                    value={currentItem.rate}
+                    keyboardType="number-pad"
+                    style={[tw`bg-blue-50 shadow-2xl mb-3 `,{width:178}]}
+                />
+            </View>
+
             <Button
                 onPress={() => setData({ ...currentItem, edit: false })}
                 // loading={isPending}
@@ -92,13 +90,7 @@ const AddItemForm = ({ currentItem, setCurrentItem }) => {
 const ShowDetails = ({ items, setCurrentItem }) => {
     return (
         <View>
-            {/* <View style={tw`flex-row justify-between  bg-gray-700 p-1 rounded`}>
-                <Text style={tw`text-xs text-white`}>Sno.</Text>
-                <Text style={tw`text-xs w-1/4 text-white`}>Item</Text>
-                <Text style={tw`text-xs text-white`}>Rate</Text>
-                <Text style={tw`text-xs text-white`}>Quantity</Text>
-                <Text style={tw`text-xs text-white`}>Amount</Text>
-            </View> */}
+           
             {items.map((item, idx) => (
                 <TouchableOpacity
                     key={idx}
@@ -113,16 +105,25 @@ const ShowDetails = ({ items, setCurrentItem }) => {
                         </View>
                         <View style={tw`flex-row justify-between`}>
                             <Text style={tw` `}>
-                                <Text style={tw`font-bold text-sm`}> Rate: </Text> ₹
-                                {item.rate}
+                                <Text style={tw`font-bold text-sm`}>
+                                    {" "}
+                                    Rate:{" "}
+                                </Text>{" "}
+                                ₹{item.rate}
                             </Text>
                             <Text style={tw` `}>
-                                <Text style={tw`font-bold text-sm`}> Quantity: </Text>{" "}
+                                <Text style={tw`font-bold text-sm`}>
+                                    {" "}
+                                    Quantity:{" "}
+                                </Text>{" "}
                                 {item.quantity}
                             </Text>
                             <Text style={tw` `}>
-                                <Text style={tw`font-bold text-sm`}> Amount: </Text> ₹
-                                {item.amount}
+                                <Text style={tw`font-bold text-sm`}>
+                                    {" "}
+                                    Amount:{" "}
+                                </Text>{" "}
+                                ₹{item.amount}
                             </Text>
                         </View>
                     </View>
@@ -131,3 +132,118 @@ const ShowDetails = ({ items, setCurrentItem }) => {
         </View>
     );
 };
+
+const tempData = [
+    {
+        id: 1,
+        name: "PVC Pipe",
+        description: "lol",
+        price: 340,
+        mrp: 120,
+    },
+    {
+        id: 2,
+        name: "Tafflon",
+        description: "lol",
+        price: 50,
+        mrp: 10,
+    },
+    {
+        id: 4,
+        name: "40 mm",
+        description: "lol",
+        price: 340,
+        mrp: 120,
+    },
+    {
+        id: 11,
+        name: "6 mm",
+        description: "lol",
+        price: 340,
+        mrp: 120,
+    },
+    {
+        id: 123,
+        name: "18 mm",
+        description: "lol",
+        price: 340,
+        mrp: 120,
+    },
+    {
+        id: 451,
+        name: "6 mm A",
+        description: "lol",
+        price: 340,
+        mrp: 120,
+    },
+    {
+        id: 15,
+        name: "6 mm B",
+        description: "lol",
+        price: 340,
+        mrp: 120,
+    },
+    {
+        id: 2341,
+        name: "Jeera",
+        description: "lol",
+        price: 340,
+        mrp: 120,
+    },
+    {
+        id: 11312,
+        name: "PVC Pipe",
+        description: "lol",
+        price: 340,
+        mrp: 120,
+    },
+    {
+        id: 124242,
+        name: "Tafflon",
+        description: "lol",
+        price: 50,
+        mrp: 10,
+    },
+    {
+        id: 4323423,
+        name: "40 mm",
+        description: "lol",
+        price: 340,
+        mrp: 120,
+    },
+    {
+        id: 112341,
+        name: "6 mm",
+        description: "lol",
+        price: 340,
+        mrp: 120,
+    },
+    {
+        id: 12123412343,
+        name: "18 mm",
+        description: "lol",
+        price: 340,
+        mrp: 120,
+    },
+    {
+        id: 4512341,
+        name: "6 mm A",
+        description: "lol",
+        price: 340,
+        mrp: 120,
+    },
+    {
+        id: 1345,
+        name: "6 mm B",
+        description: "lol",
+        price: 340,
+        mrp: 120,
+    },
+    {
+        id: 234341,
+        name: "Jeera",
+        description: "lol",
+        price: 340,
+        mrp: 120,
+    },
+];
