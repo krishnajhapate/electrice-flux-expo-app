@@ -11,21 +11,31 @@ const initTemp = {
     rate: "1",
     amount: "1",
 };
+const iniActions = {
+    show: false,
+    edit: false,
+    index: null,
+};
 
 export default function BillCreate({ items, setItems }) {
     console.log(items);
     const [currentItem, setCurrentItem] = useState(initTemp);
 
-    const [currentActions, setCurrentActions] = useState({
-        show: false,
-        edit: false,
-        index: null,
-    });
+    const [currentActions, setCurrentActions] = useState(iniActions);
     const handleAdd = () => {
         setItems([...items, currentItem]);
         setCurrentItem(initTemp);
         // Alert("added");
     };
+    const handleDelete = (index) => {
+        let newArray = items;
+        delete newArray[index];
+        setItems(newArray);
+        setCurrentItem(initTemp);
+        setCurrentActions(iniActions);
+    };
+
+    const handleUpdate = (index, data) => {};
     return (
         <View style={tw`my-5 w-11/12  mx-auto bg-blue-50`}>
             <Text
@@ -48,6 +58,7 @@ export default function BillCreate({ items, setItems }) {
                     setCurrentActions={setCurrentActions}
                     currentActions={currentActions}
                     handleAdd={handleAdd}
+                    handleDelete={handleDelete}
                 />
             </View>
         </View>
@@ -60,6 +71,7 @@ const AddItemForm = ({
     handleAdd,
     currentActions,
     setCurrentActions,
+    handleDelete,
 }) => {
     return (
         <View style={tw`mt-5`}>
@@ -101,16 +113,29 @@ const AddItemForm = ({
                     style={[tw`bg-blue-50 shadow-2xl mb-3 `, { width: 178 }]}
                 />
             </View>
-            {currentActions.index ? (
-                <Button
-                    onPress={handleAdd}
-                    // loading={isPending}
-                    contentStyle={tw` py-2 rounded-xl `}
-                    style={tw`rounded-xl `}
-                    mode="contained"
+            {currentActions.edit ? (
+                <View
+                    style={tw`flex flex-row w-full mx-auto justify-around mt-5`}
                 >
-                    Update Item
-                </Button>
+                    <Button
+                        onPress={() => handleDelete(currentItem.index)}
+                        // loading={isPending}
+                        contentStyle={tw` py-2 rounded-xl `}
+                        style={tw`rounded-xl w-1/3 bg-red-700`}
+                        mode="contained"
+                    >
+                        Delete
+                    </Button>
+                    <Button
+                        onPress={() => navigation.navigate("ProductScreen")}
+                        // loading={isPending}
+                        contentStyle={tw` py-2 rounded-xl `}
+                        style={tw`rounded-xl w-1/3`}
+                        mode="contained"
+                    >
+                        Update
+                    </Button>
+                </View>
             ) : (
                 <Button
                     onPress={handleAdd}
@@ -136,7 +161,7 @@ const ShowDetails = ({ items, setCurrentItem, setCurrentActions }) => {
                         setCurrentActions((actions) => {
                             return { actions, edit: true, index: idx };
                         });
-                        setCurrentItem({ ...item, indx: idx });
+                        setCurrentItem({ ...item, index: idx });
                     }}
                 >
                     <View
