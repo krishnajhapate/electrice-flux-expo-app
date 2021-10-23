@@ -18,15 +18,12 @@ const iniActions = {
 };
 
 export default function BillCreate({ items, setItems }) {
-    console.log(items);
     const [currentItem, setCurrentItem] = useState(initTemp);
-
     const [currentActions, setCurrentActions] = useState(iniActions);
 
     const handleAdd = () => {
         setItems([
             ...items,
-
             {
                 ...currentItem,
                 amount: Number(currentItem.quantity) * Number(currentItem.rate),
@@ -34,6 +31,7 @@ export default function BillCreate({ items, setItems }) {
         ]);
         setCurrentItem(initTemp);
     };
+    
     const handleDelete = (index) => {
         let newArray = items;
         setItems(newArray.filter((item, idx) => idx !== index));
