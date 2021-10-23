@@ -13,6 +13,7 @@ import Services from "./Services/Services";
 import ServiceAction from "./Services/ServiceAction";
 import Settings from "./Settings";
 import CreateInvoice from "./Invoice/CreateInvoice";
+import BillPreviewScreen from "./BillPreview";
 
 const Stack = createNativeStackNavigator();
 
@@ -84,6 +85,7 @@ export default function Screens() {
                     component={ServiceAction}
                 />
                 <Stack.Screen name="SettingsScreen" component={Settings} />
+                <Stack.Screen name="BillPreviewScreen" component={BillPreviewScreen} />
             </Stack.Navigator>
         </>
     );

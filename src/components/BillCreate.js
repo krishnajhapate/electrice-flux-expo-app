@@ -17,7 +17,7 @@ const iniActions = {
     index: null,
 };
 
-export default function BillCreate({ items, setItems }) {
+export default function BillCreate({ items, setItems, navigation }) {
     const [currentItem, setCurrentItem] = useState(initTemp);
     const [currentActions, setCurrentActions] = useState(iniActions);
 
@@ -31,7 +31,7 @@ export default function BillCreate({ items, setItems }) {
         ]);
         setCurrentItem(initTemp);
     };
-    
+
     const handleDelete = (index) => {
         let newArray = items;
         setItems(newArray.filter((item, idx) => idx !== index));
@@ -81,7 +81,7 @@ export default function BillCreate({ items, setItems }) {
                     style={tw`flex flex-row w-full mx-auto justify-around mt-5`}
                 >
                     <Button
-                        // onPress={() => handleDelete(currentItem.index)}
+                        onPress={() => navigation.navigate("BillPreviewScreen")}
                         // loading={isPending}
                         contentStyle={tw` py-2 rounded-xl `}
                         style={tw`rounded-xl w-5/12 bg-red-700`}
