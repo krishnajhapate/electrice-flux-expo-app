@@ -2,9 +2,9 @@ import React, { useLayoutEffect } from "react";
 import { View, Text } from "react-native";
 import { Icon } from "react-native-elements";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import RenderHtml from "react-native-render-html";
 
-export default function BillPreviewScreen({navigation}) {
-    
+export default function BillPreviewScreen({ navigation }) {
     useLayoutEffect(() => {
         navigation.setOptions({
             title: "Bill Preview",
@@ -26,10 +26,17 @@ export default function BillPreviewScreen({navigation}) {
         });
     }, [navigation]);
 
-
     return (
         <View>
             <Text>BillPreviewScreen</Text>
+            <RenderHtml
+                source={{
+                    html: `
+<p style='text-align:center;'>
+  Hello World!
+</p>`,
+                }}
+            />
         </View>
     );
 }
